@@ -1,0 +1,74 @@
+[
+  {
+    "mode": "extraction_only",
+    "budget": 6000,
+    "seed": 2,
+    "synth_tokens": 6420,
+    "gen_tokens": 6144,
+    "n_notes": 12,
+    "chrf": 21.495
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 6000,
+    "seed": 3,
+    "synth_tokens": 6405,
+    "gen_tokens": 6130,
+    "n_notes": 12,
+    "chrf": 21.212
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 20000,
+    "seed": 2,
+    "synth_tokens": 20012,
+    "gen_tokens": 18432,
+    "n_notes": 58,
+    "chrf": 22.216
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 20000,
+    "seed": 3,
+    "synth_tokens": 20025,
+    "gen_tokens": 18432,
+    "n_notes": 58,
+    "chrf": 21.884
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 6000,
+    "seed": 2,
+    "synth_tokens": 6092,
+    "gen_tokens": 5107,
+    "n_notes": 53,
+    "chrf": 21.235
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 6000,
+    "seed": 3,
+    "synth_tokens": 6094,
+    "gen_tokens": 5375,
+    "n_notes": 55,
+    "chrf": 21.718
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 20000,
+    "seed": 2,
+    "synth_tokens": 20065,
+    "gen_tokens": 16585,
+    "n_notes": 177,
+    "chrf": 22.392
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 20000,
+    "seed": 3,
+    "synth_tokens": 20108,
+    "gen_tokens": 17090,
+    "n_notes": 176,
+    "chrf": 21.719
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "level": 0,
+  "n": 100,
+  "closed_book_acc": 0.0,
+  "icl_gold_acc": 0.0,
+  "closed_book_parse": 1.0,
+  "icl_gold_parse": 1.0,
+  "headroom_band": 0.0,
+  "verdict": "NARROW",
+  "ledger": {
+    "run_name": "phase0_rulearena",
+    "axis_emitted_training_tokens": 0,
+    "axis_total_generator_completion_tokens": 92189,
+    "axis_total_generator_tokens": 908147,
+    "emitted_examples": 0,
+    "total_calls": 200,
+    "by_purpose": {
+      "anchor_closedbook": {
+        "calls": 100,
+        "prompt_tokens": 23129,
+        "completion_tokens": 55259,
+        "wall_s": 638.0549988746643
+      },
+      "anchor_iclgold": {
+        "calls": 100,
+        "prompt_tokens": 792829,
+        "completion_tokens": 36930,
+        "wall_s": 609.9352231025696
+      }
+    }
+  }
+}

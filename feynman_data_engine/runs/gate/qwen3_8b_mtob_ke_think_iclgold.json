@@ -1,0 +1,312 @@
+{
+  "summary": {
+    "base": "Qwen/Qwen3-8B",
+    "adapter": null,
+    "direction": "ke",
+    "context": "gold",
+    "n": 50,
+    "corpus_chrf": 27.136
+  },
+  "samples": [
+    {
+      "src": "Wa me kariak kaia kon untuk emumur kalo tumun amkeiret mu wara nanet.",
+      "hyp": "I ask for help for the women if the child is you, go to the house.",
+      "ref": "This is blood medicine for mothers, when they have given birth they drink this.",
+      "chrf": 17.06
+    },
+    {
+      "src": "Mu bo Tamisengga som dande yecie.",
+      "hyp": "They return to Tamisengga and then hit.",
+      "ref": "They are going (on a return trip) to bury someone in Antalisa.",
+      "chrf": 20.89
+    },
+    {
+      "src": "Suagi laurta kaskas bara kanggeit.",
+      "hyp": "Have sex with wave shell play game",
+      "ref": "The tuna play at the water surface; the seagulls come down to play (i.e. eat).",
+      "chrf": 11.25
+    },
+    {
+      "src": "Suo me kene arkon metko.",
+      "hyp": "I cut down a tree there.",
+      "ref": "At Suo is a kene tree.",
+      "chrf": 19.9
+    },
+    {
+      "src": "Nazuwa ladanun giarten met mecuan.",
+      "hyp": "Nazuwa's shirt is stored in mecuan.",
+      "ref": "Nazuwa put her new shirt away.",
+      "chrf": 29.73
+    },
+    {
+      "src": "Ma urawat komahal, ka tok mat naunakte.",
+      "hyp": "He/She/It does not know, you (object) token mat naunakte.",
+      "ref": "He doesn't know the way, you show him.",
+      "chrf": 25.35
+    },
+    {
+      "src": "Et me mu yar nawanenda owatko daren.",
+      "hyp": "They say to go here to the sea.",
+      "ref": "That canoe, they loaded stones in it and it sank over there.",
+      "chrf": 14.2
+    },
+    {
+      "src": "An istrat kahendengoa marmar ba temun.",
+      "hyp": "I walk very far and big street.",
+      "ref": "I'm walking on a long wide road.",
+      "chrf": 13.86
+    },
+    {
+      "src": "Kecaun dan lalangun komain.",
+      "hyp": "Angry and hot skewer.",
+      "ref": "Its kecap and its spicyness are just right.",
+      "chrf": 12.58
+    },
+    {
+      "src": "Patinun temun, don konkonin, bolodak.",
+      "hyp": "A big wound, it doesn't matter, just a little.",
+      "ref": "He has a big wound, it doesn't matter, it's just a little.",
+      "chrf": 74.74
+    },
+    {
+      "src": "Tat me kubirar reidak.",
+      "hyp": "Tat's graveyard is much.",
+      "ref": "At Tat there are many graves.",
+      "chrf": 21.5
+    },
+    {
+      "src": "Sontum kawirten hari minggu gerejao nasumbiyan.",
+      "hyp": "The person went to church on Sunday.",
+      "ref": "Christians worship at the church on Sunday.",
+      "chrf": 43.73
+    },
+    {
+      "src": "An kadenan lalangda sirie Binkur esun anat cam.",
+      "hyp": "I am the one who dies from the heat of Binkur's tree.",
+      "ref": "I had a fever, I ordered Binkur's father to medicate me.",
+      "chrf": 26.11
+    },
+    {
+      "src": "Tanggor me mal reidak.",
+      "hyp": "Tanggor's big much",
+      "ref": "There are many rabbitfish at Tanggor.",
+      "chrf": 20.26
+    },
+    {
+      "src": "Madi emun kiemkangjie.",
+      "hyp": "He/She is big and flees.",
+      "ref": "Madi's mother is sewing the rim of a basket.",
+      "chrf": 9.18
+    },
+    {
+      "src": "Kewe me tok nasalen.",
+      "hyp": "The house is still completely opened.",
+      "ref": "That house is still open.",
+      "chrf": 56.68
+    },
+    {
+      "src": "Kaliset me Aina emun kewe anggasun me per nam.",
+      "hyp": "Aina's big house doorpost is my water.",
+      "ref": "If it rains the water in front of Aina's mother's house puddles.",
+      "chrf": 23.11
+    },
+    {
+      "src": "Donenet kuskapkapten bo nasuena nerunggo.",
+      "hyp": "<think>",
+      "ref": "A black ant goes inside the sugar.",
+      "chrf": 4.96
+    },
+    {
+      "src": "Faisal emun mua mingparin.",
+      "hyp": "Faisal is a big person.",
+      "ref": "Faisal's mother and family sell oil.",
+      "chrf": 19.47
+    },
+    {
+      "src": "Nina Ruslan taraun tok kuat.",
+      "hyp": "Nina Ruslan's grandparent is still strong.",
+      "ref": "Granny Ruslan's grandmother is still strong.",
+      "chrf": 63.22
+    },
+    {
+      "src": "Nina Im taraun me kumiriun arkon Nina Tanggiunggo.",
+      "hyp": "Nina's uncle (taraun) me (I) kumiriun (to be red) arkon (ark) Nina Tanggiunggo.",
+      "ref": "Im' s grandmother has one candlenut at Nina Tanggiun.",
+      "chrf": 31.66
+    },
+    {
+      "src": "Tami esun bo rompunggara momarat goyang.",
+      "hyp": "Tami's father and rompunggara's mother dance.",
+      "ref": "Tami's father goes to the floating fish lure to shake momar fish (to use as bait).",
+      "chrf": 24.19
+    },
+    {
+      "src": "Ma yumene asokmang, ma tiri.",
+      "hyp": "He/she/it is a drum, he/she/it is a drum.",
+      "ref": "He is short of breath, he ran.",
+      "chrf": 15.57
+    },
+    {
+      "src": "Jawawas yumene kanggirar laus bolon.",
+      "hyp": "Jawawas (distal) face wide a little.",
+      "ref": "That Javanese woman has a slightly broad face.",
+      "chrf": 15.35
+    },
+    {
+      "src": "Keir Sakina mu imunat na.",
+      "hyp": "The parrot Sakina is big.",
+      "ref": "A lorikeet ate Sakina's family's banana.",
+      "chrf": 17.2
+    },
+    {
+      "src": "Pi Gowienggo me fikfika ewaet me era luin.",
+      "hyp": "We go to speak to the palm cockatoo, then do.",
+      "ref": "When we're at Tana Besar and the palm cockatoo calls a canoe will come.",
+      "chrf": 30.01
+    },
+    {
+      "src": "Nabil emun inier melalu ba ma namanghadawi kolpis.",
+      "hyp": "Nabil is big, we two pass through and he faces another place.",
+      "ref": "Me and Nabil's mother sat chatting but she was facing another place.",
+      "chrf": 36.06
+    },
+    {
+      "src": "Rustam ma waruotkin ba ma narasa kawes.",
+      "hyp": "Rustam washed and tasted the sail.",
+      "ref": "Rustam wanted to bathe but he feld cold.",
+      "chrf": 31.98
+    },
+    {
+      "src": "Sontum Pakpakatenara mu deir.",
+      "hyp": "The person Pakpakatenara they push/bring.",
+      "ref": "They brought people from Fakfak.",
+      "chrf": 17.0
+    },
+    {
+      "src": "Burhan sarimat sarara, karabar reidak.",
+      "hyp": "Burhan carved a lot, anchored much.",
+      "ref": "Burhan climbed the guava, there were many red ants.",
+      "chrf": 22.52
+    },
+    {
+      "src": "Desili koyet an koi panggutki tenaunat tawara.",
+      "hyp": "I call names then call names keel.obj ark clam be finished.",
+      "ref": "After planing, I use the panggut to chop the keel.",
+      "chrf": 16.7
+    },
+    {
+      "src": "In melalu garunga ba an se gelem.",
+      "hyp": "In passing through the forest, I yawned.",
+      "ref": "We sit talking but I'm already yawning.",
+      "chrf": 16.84
+    },
+    {
+      "src": "Sor wa me mais.",
+      "hyp": "This shark is spoiled.",
+      "ref": "This fish is spoiled.",
+      "chrf": 60.76
+    },
+    {
+      "src": "Tumun se bo teimun miarip.",
+      "hyp": "The small [object] goes two distal.",
+      "ref": "The kid has become this big.",
+      "chrf": 15.21
+    },
+    {
+      "src": "Ror yumene ur koura ma dekte ran mian.",
+      "hyp": "The distal tail shark he/she/it back and forth back and forth.",
+      "ref": "That wood, when the wind blows it moves back and forth.",
+      "chrf": 33.92
+    },
+    {
+      "src": "Rorcat sanggarei!",
+      "hyp": "The tree climbs!",
+      "ref": "Search for your plank!",
+      "chrf": 5.56
+    },
+    {
+      "src": "Faisal emun me mindi don bolonet me ma he kademor.",
+      "hyp": "Faisal is big, like that, this little one is angry.",
+      "ref": "Faisal's mother is like that, if there is a small thing she is mad.",
+      "chrf": 32.59
+    },
+    {
+      "src": "Hawa kamfor giartenat koni jie.",
+      "hyp": "Hawa carved the stove for you.",
+      "ref": "Hawa bought one new stove.",
+      "chrf": 26.2
+    },
+    {
+      "src": "Maimai olunat fakurat.",
+      "hyp": "Maimai destroyed the leaf.",
+      "ref": "The bugs destroyed the leaves.",
+      "chrf": 54.99
+    },
+    {
+      "src": "Abdula emun mu borara, in epka, muat kobes.",
+      "hyp": "Abdula poured this much in the back.",
+      "ref": "Abdula's mother and family went in the front, we in the back, (but) we reached them.",
+      "chrf": 22.93
+    },
+    {
+      "src": "Kier tamanggara botkin?",
+      "hyp": "They sail close to the coast?",
+      "ref": "Where are you two going?",
+      "chrf": 11.3
+    },
+    {
+      "src": "Ladan yumet masarura ba donselet tan yuonyuon paruoret.",
+      "hyp": "The shirt is made of cloth by the sun's exit.",
+      "ref": "Rip that shirt so that you can make a cloth for wiping hands.",
+      "chrf": 18.3
+    },
+    {
+      "src": "Warkin kararakte bayas se bo iriskapte kaheni bo.",
+      "hyp": "Low tide sea sand and white from down.",
+      "ref": "When the tide is low the white sand stretches far.",
+      "chrf": 21.04
+    },
+    {
+      "src": "Abdula esun mu etkies teba.",
+      "hyp": "Abdula's father, they are progressive.",
+      "ref": "Abdula's father and family are carving a canoe.",
+      "chrf": 39.39
+    },
+    {
+      "src": "Keluer warkin kararakte ma gare.",
+      "hyp": "The crab crawls at low tide.",
+      "ref": "If it's low tide the crab crawls.",
+      "chrf": 59.61
+    },
+    {
+      "src": "Kaling yumene me kahamanun se kuskap.",
+      "hyp": "The beam is black anus (distal).",
+      "ref": "That pan's bottom is black.",
+      "chrf": 33.1
+    },
+    {
+      "src": "Tomi kieunbon Yasin emunbon naulelukta mier naukoup.",
+      "hyp": "Tomi brings his wife Yasin, big meet they fish.",
+      "ref": "Tomi's wife and Yasin's mother meet each other and they hug each other.",
+      "chrf": 20.71
+    },
+    {
+      "src": "Bakri emun anat marok ma toni sor saerak ba mambon.",
+      "hyp": "Bakri, the big one, has fish, he says until there is nothing for there is.",
+      "ref": "Bakri's mother fooled me, she said there is no fish but there is.",
+      "chrf": 40.99
+    },
+    {
+      "src": "Suci mok nerunggoa perna.",
+      "hyp": "Suci's mug is ever inside.",
+      "ref": "Suci drinks water from a mug.",
+      "chrf": 20.42
+    },
+    {
+      "src": "Pas yume he kaborko pak raman.",
+      "hyp": "He is pregnant with Raman's child.",
+      "ref": "That woman is six months pregnant.",
+      "chrf": 34.7
+    }
+  ]
+}

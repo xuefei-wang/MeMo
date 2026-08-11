@@ -1,0 +1,215 @@
+{
+  "summary": {
+    "adapter": null,
+    "level": 0,
+    "n": 40,
+    "exact_acc": 0.0,
+    "parse_rate": 1.0,
+    "within10": 0.125,
+    "within20": 0.15,
+    "median_rel_err": 0.9361,
+    "mean_rel_err": 0.7854
+  },
+  "results": [
+    {
+      "pred": 50.0,
+      "gold": 1245.0,
+      "exact": false
+    },
+    {
+      "pred": 1.0,
+      "gold": 1166.0,
+      "exact": false
+    },
+    {
+      "pred": 20.0,
+      "gold": 949.0,
+      "exact": false
+    },
+    {
+      "pred": 1373.0,
+      "gold": 1513.0,
+      "exact": false
+    },
+    {
+      "pred": 400.0,
+      "gold": 1434.0,
+      "exact": false
+    },
+    {
+      "pred": 150.0,
+      "gold": 2314.0,
+      "exact": false
+    },
+    {
+      "pred": 38.0,
+      "gold": 1131.0,
+      "exact": false
+    },
+    {
+      "pred": 150.0,
+      "gold": 957.0,
+      "exact": false
+    },
+    {
+      "pred": 9.0,
+      "gold": 1141.0,
+      "exact": false
+    },
+    {
+      "pred": 20.0,
+      "gold": 1261.0,
+      "exact": false
+    },
+    {
+      "pred": 250.0,
+      "gold": 1279.0,
+      "exact": false
+    },
+    {
+      "pred": 1048.0,
+      "gold": 1203.0,
+      "exact": false
+    },
+    {
+      "pred": 150.0,
+      "gold": 992.0,
+      "exact": false
+    },
+    {
+      "pred": 150.0,
+      "gold": 1097.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1317.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1017.0,
+      "exact": false
+    },
+    {
+      "pred": 1305.0,
+      "gold": 1300.0,
+      "exact": false
+    },
+    {
+      "pred": 30.0,
+      "gold": 1321.0,
+      "exact": false
+    },
+    {
+      "pred": 1.0,
+      "gold": 1377.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 2524.0,
+      "exact": false
+    },
+    {
+      "pred": 46.0,
+      "gold": 972.0,
+      "exact": false
+    },
+    {
+      "pred": 5.0,
+      "gold": 846.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1078.0,
+      "exact": false
+    },
+    {
+      "pred": 25.0,
+      "gold": 1882.0,
+      "exact": false
+    },
+    {
+      "pred": 1483.0,
+      "gold": 1538.0,
+      "exact": false
+    },
+    {
+      "pred": 180.0,
+      "gold": 1183.0,
+      "exact": false
+    },
+    {
+      "pred": 1053.0,
+      "gold": 963.0,
+      "exact": false
+    },
+    {
+      "pred": 2.0,
+      "gold": 1277.0,
+      "exact": false
+    },
+    {
+      "pred": 62.0,
+      "gold": 970.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1643.0,
+      "exact": false
+    },
+    {
+      "pred": 45.0,
+      "gold": 1300.0,
+      "exact": false
+    },
+    {
+      "pred": 50.0,
+      "gold": 1104.0,
+      "exact": false
+    },
+    {
+      "pred": 150.0,
+      "gold": 1315.0,
+      "exact": false
+    },
+    {
+      "pred": 1.0,
+      "gold": 1022.0,
+      "exact": false
+    },
+    {
+      "pred": 1732.0,
+      "gold": 1892.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1098.0,
+      "exact": false
+    },
+    {
+      "pred": 712.0,
+      "gold": 1742.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1857.0,
+      "exact": false
+    },
+    {
+      "pred": 430.0,
+      "gold": 1075.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 2326.0,
+      "exact": false
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+# Feynman Data Engine — Run Log
+
+Autonomous build, 2026-08-11. Branch `feat/feynman-data-engine`.
+
+## Environment
+- 7× RTX 6000 Ada (48GB), 6 idle. 128 cores, 755GB RAM. Disk /data 100% (230G free).
+- No real API keys → everything local. Cached models: Qwen2.5-3B/1.5B-Instruct,
+  Qwen3-14B/32B (vLLM 0.6.6 can't serve Qwen3 arch), Llama-3.3-70B-Instruct.
+- vLLM 0.6.6.post1 (works with Qwen2/Llama arch, NOT Qwen3). transformers 4.57, trl 1.9.2.
+- Servers: gen=Qwen2.5-3B @:8001 (GPU1), student=Qwen2.5-1.5B @:8002 (GPU2).
+
+## Built & working
+- `common/ledger.py` — two-axis token accounting (emitted-training vs total-generator). Tested.
+- `common/llm.py` — OpenAI-compatible client, per-call purpose logging, JSON extraction. 
+- `data/mtob.py` — MTOB loader (375 train, 50 test/dir, 2531 wordlist, grammar book). Tested.
+- `eval/chrf.py` — sacrebleu chrF. Tested.
+- `eval/translate.py` — concurrent translation eval (shared by anchors + learner eval).
+- `scripts/phase0_anchors.py` — G1 headroom gate.
+
+## Findings
+### G1 on MTOB with Qwen2.5-3B: NO HEADROOM → pivot
+- KE: closed-book 14.7, ICL-gold 15.7 → band **1.0 chrF** (NARROW).
+- EK: closed-book 13.7, ICL-gold 7.9 → band **-5.7** (ICL hurts).
+- Diagnosis: 3B model can't do in-context language learning on MTOB. ICL-gold
+  samples are fluent-but-hallucinated English; chrF floor inflated by shared
+  English function-word characters. Known result — MTOB paper used frontier models.
+- Implication: MTOB needs a strong learner (70B+), unfit for a CHEAP-learner
+  efficiency-curve study. MTOB scaffolding retained; revisit with a larger learner
+  as a later-phase question.
+
+## Decision
+Pivot thin slice to **RuleArena** (spec-designated fallback): rules-in-context is
+tractable for a 3B model (honest headroom expected), and aligns with the
+cheap-fixed-learner efficiency study.
+
+## RuleArena airline (thin slice substrate)
+- Corpus = reference_rules.txt + fee tables (~6k tok). gold via compute_answer oracle.
+- G1 with exact-match: closed 0.0 / ICL 0.0 (3B can't nail multi-step arithmetic).
+  BUT graded metric shows real headroom: median rel-err ICL 0.44 < closed 0.58;
+  within-20% ICL 17% > closed 7%.
+- **Reframe:** G2 is RELATIVE (feynman-data vs extraction-data, same 3B learner) on
+  a GRADED metric -> does not need a high absolute ceiling. Proceed with 3B.
+
+## Pipeline built (all working E2E)
+- data/rulearena.py: loader + synthetic problem sampler + gold oracle.
+- engine/engine.py: extraction_only (uniform) vs feynman_core (source-blind student
+  probe -> skip passes, diagnose+teach+critic on failures = failure-driven curriculum).
+- learner/sft.py (LoRA Qwen2.5-3B via trl) + eval_learner.py (HF batched, graded metrics).
+- scripts/run_grid.py (resumable: gen -> SFT -> eval -> aggregate), plot_curve.py (2-axis).
+- Smoke: feynman burns MORE gen-compute per emitted token than extraction (two-axis story visible).
+
+## Reference floor
+- Base Qwen2.5-3B closed-book (no training), 60 test probs: within20=0.0, median_rel_err=0.65.
+
+## First signal (validation, pre-fix, 30k/seed0, eval_n=60)
+- extraction: within20=0.050, medRelErr=0.641, gen=23456
+- feynman:    within20=0.033, medRelErr=0.757, gen=37740  (WORSE + 60% more compute)
+- Diagnosis: NOT just noise. At low budget both train on ~identical data (same seed
+  -> same problems; 1.5B student failed ~everything at near-exact threshold -> feynman
+  never skipped -> == extraction + diagnose/recap overhead). Failure loop couldn't bite.
+
+## Root-cause fix
+- Loosened feynman "pass" to a graded 25% band. Student now discriminates: skipped
+  3/16 easy problems in a 12k smoke -> budget concentrates on the hard frontier.
+- Gen-compute overhead ~1.37x emitted (two-axis cost confirmed).
+
+## Base references (n=100, learner Qwen2.5-3B, extractor-fixed)
+- closed-book floor: within20=0.02, medRelErr=0.66.
+- ICL-gold ceiling UNRELIABLE on 3B: rules (6k tok) exceed eval_learner max_length
+  4096 -> problem truncated -> garbage. 3B can't use ICL anyway (phase0). Use floor only.
+
+## Grid wave 1 results (post-fix, mean over 2 seeds; floor within20=0.02, medRelErr=0.66)
+| cell | within20 | medRelErr | gen tokens |
+|---|---|---|---|
+| extraction 30k | 0.045 | 0.744 | 23.6k |
+| feynman 30k    | 0.050 | 0.729 | 38.5k |
+| extraction 90k | 0.060 | 0.776 | 69k |
+| feynman 90k    | 0.070 | 0.840 | 113k |
+
+Read:
+- within20 (primary): feynman >= extraction at both budgets; feynman scales steeper
+  (0.050->0.070 vs 0.045->0.060). BUT seed variance (extraction 30k: 0.02 vs 0.07)
+  SWAMPS the gap -> not significant at 2 seeds.
+- feynman costs ~1.6x generator compute -> on the gen-token axis, extraction wins.
+- SFT RAISES medRelErr above untrained base (0.66): training adds variance
+  (more near-hits AND more big misses), esp. at 90k.
+- Net: weak/null, slight feynman edge on within20 that GROWS with budget -> motivates
+  a higher-budget wave (the "needs budget to pay off" hypothesis).
+
+## Capability + contamination gate (model selection) — RESOLVED
+Two gates must BOTH hold: closed-book LOW (not contaminated) AND ICL-gold HIGH (capable).
+Field standard learner (SIEVE Qwen3-8B, Cartridges/EntiGraph Llama-3-8B) = 8B-class.
+
+| setup | closed-book | ICL-gold | band | verdict |
+|---|---|---|---|---|
+| MTOB @ Qwen2.5-3B (KE) | 14.7 | 15.7 chrF | 1.0 | FAIL: capability-bound |
+| RuleArena airline @ Qwen3-14B (no-think) | .26 w20 | .22 w20 | ~0 | FAIL: contaminated |
+| RuleArena airline @ Qwen3-14B (think) | .15 w20 | .125 w20 | ~0 | FAIL: contaminated (holds w/ thinking) |
+| **MTOB @ Qwen3-8B (KE, thinking)** | **14.3** | **27.1 chrF** | **+12.8 (1.9x)** | **CLEARS BOTH** |
+
+- MTOB@8B: real translations (chrF 75/63/61 on best sentences; median per-sent 22). Model
+  looks up wordlist glosses + applies grammar in-context. Kalamang = contamination-free.
+- Gotcha: Qwen3 no-think ECHOES the source (degenerate); thinking ON is required, and the
+  eval must strip <think>...</think> before chrF (learner/eval_mtob.py strip_think).
+- DECISION: real study substrate = MTOB (KE) + Qwen3-8B learner + chrF. ~13 chrF resolution.
+- Serving note: vLLM 0.6.6 can't serve Qwen3 -> eval/train via HF; for fast data-gen use a
+  Qwen2-arch generator (vLLM-servable) or upgrade vLLM.
+
+## Grid final (3 budgets x 4 seeds) — the honest result
+- 2-seed run LOOKED like a growing monotonic edge (+.005->+.010->+.025). Adding
+  seeds 2,3 FLATTENED it: 4-seed within20 diff = +.008 / +.017 / +.008. The 200k
+  "trend" was partly small-sample noise (one new seed favored extraction).
+- 4-seed within20: 30k .040/.048 | 90k .068/.085 | 200k .090/.098 (ext/fey).
+  feynman mean >= extraction everywhere but ALL bootstrap CIs span 0; seed spread
+  huge (ext 200k: 0.05-0.12). Compute premium 1.5-1.7x.
+- VERDICT: no confirmed Feynman win on this slice. Small persistent positive lean
+  within noise, bought with ~1.6x compute. Both engines beat floor (.02->~.10) and
+  scale with budget. At 3B, task CAPABILITY (not knowledge) is binding.
+- Next (later specs): more seeds for power; task-capable learner (>=14B); data-quality
+  gate (verify generator reasoning vs oracle); ablation ladder; SIEVE/Cartridges incumbents.
+- Deliverables (all committed): FINDINGS.md, runs/grid/curve_{within20,medrelerr}.png,
+  results.json, scripts/{run_engine,run_grid,plot_curve,analyze}.py, engine/, learner/.
+
+## MTOB @ Qwen3-8B grid (knowledge-bound substrate)
+- Floor (untrained, no ctx) 15.9 chrF; ICL ceiling ~27. Shared gold base (375 pairs);
+  budget = added synthetic only. Closed-book ke chrF, n=50, no-think.
+- n=2 LOOKED significant at 20k (+1.17, p=0.042 per-sentence). n=4 CORRECTED it:
+  two new extraction seeds (21.50/22.22) lifted ext mean; gap -> +0.34 (6k) / +0.59 (20k),
+  BOTH n.s. (p=0.45 / 0.24). Same over-read lesson as RuleArena.
+- 4-seed means: 6k ext 21.10 / fey 21.44 | 20k ext 21.69 / fey 22.28. fey>=ext everywhere.
+- Compute: fey uses FEWER completion tokens (-15%/-9%) -> NO compute tax (vs RuleArena 1.6x).
+  Prefill 4.8x (re-sent book), ~free under vLLM prefix cache.
+- VERDICT: no confirmed win at n=4, but positive-and-free lean that widens with budget --
+  materially better than the RuleArena null-and-taxed result. Needs more power, not a new
+  mechanism. Next: more seeds + mid budget (~12k); ek direction; data-quality gate.

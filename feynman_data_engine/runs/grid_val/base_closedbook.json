@@ -1,0 +1,315 @@
+{
+  "summary": {
+    "adapter": null,
+    "level": 0,
+    "n": 60,
+    "exact_acc": 0.0,
+    "parse_rate": 1.0,
+    "within10": 0.0,
+    "within20": 0.0,
+    "median_rel_err": 0.6529,
+    "mean_rel_err": 0.7492
+  },
+  "results": [
+    {
+      "pred": 40.0,
+      "gold": 1245.0,
+      "exact": false
+    },
+    {
+      "pred": 201.0,
+      "gold": 1166.0,
+      "exact": false
+    },
+    {
+      "pred": 374.0,
+      "gold": 949.0,
+      "exact": false
+    },
+    {
+      "pred": 501.0,
+      "gold": 1513.0,
+      "exact": false
+    },
+    {
+      "pred": 599.0,
+      "gold": 1434.0,
+      "exact": false
+    },
+    {
+      "pred": 1484.0,
+      "gold": 2314.0,
+      "exact": false
+    },
+    {
+      "pred": 58.0,
+      "gold": 1131.0,
+      "exact": false
+    },
+    {
+      "pred": 25.0,
+      "gold": 957.0,
+      "exact": false
+    },
+    {
+      "pred": 366.0,
+      "gold": 1141.0,
+      "exact": false
+    },
+    {
+      "pred": 391.0,
+      "gold": 1261.0,
+      "exact": false
+    },
+    {
+      "pred": 444.0,
+      "gold": 1279.0,
+      "exact": false
+    },
+    {
+      "pred": 178.0,
+      "gold": 1203.0,
+      "exact": false
+    },
+    {
+      "pred": 552.0,
+      "gold": 992.0,
+      "exact": false
+    },
+    {
+      "pred": 14.0,
+      "gold": 1097.0,
+      "exact": false
+    },
+    {
+      "pred": 492.0,
+      "gold": 1317.0,
+      "exact": false
+    },
+    {
+      "pred": 407.0,
+      "gold": 1017.0,
+      "exact": false
+    },
+    {
+      "pred": 6930.0,
+      "gold": 1300.0,
+      "exact": false
+    },
+    {
+      "pred": 536.0,
+      "gold": 1321.0,
+      "exact": false
+    },
+    {
+      "pred": 23.1,
+      "gold": 1377.0,
+      "exact": false
+    },
+    {
+      "pred": 1024.0,
+      "gold": 2524.0,
+      "exact": false
+    },
+    {
+      "pred": 2542.0,
+      "gold": 972.0,
+      "exact": false
+    },
+    {
+      "pred": 166.0,
+      "gold": 846.0,
+      "exact": false
+    },
+    {
+      "pred": 487.0,
+      "gold": 1078.0,
+      "exact": false
+    },
+    {
+      "pred": 1447.0,
+      "gold": 1882.0,
+      "exact": false
+    },
+    {
+      "pred": 833.0,
+      "gold": 1538.0,
+      "exact": false
+    },
+    {
+      "pred": 2603.0,
+      "gold": 1183.0,
+      "exact": false
+    },
+    {
+      "pred": 22.68,
+      "gold": 963.0,
+      "exact": false
+    },
+    {
+      "pred": 6.0,
+      "gold": 1277.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 970.0,
+      "exact": false
+    },
+    {
+      "pred": 75.0,
+      "gold": 1643.0,
+      "exact": false
+    },
+    {
+      "pred": 740.0,
+      "gold": 1300.0,
+      "exact": false
+    },
+    {
+      "pred": 214.0,
+      "gold": 1104.0,
+      "exact": false
+    },
+    {
+      "pred": 550.0,
+      "gold": 1315.0,
+      "exact": false
+    },
+    {
+      "pred": 527.0,
+      "gold": 1022.0,
+      "exact": false
+    },
+    {
+      "pred": 632.0,
+      "gold": 1892.0,
+      "exact": false
+    },
+    {
+      "pred": 273.0,
+      "gold": 1098.0,
+      "exact": false
+    },
+    {
+      "pred": 2637.0,
+      "gold": 1742.0,
+      "exact": false
+    },
+    {
+      "pred": 1072.0,
+      "gold": 1857.0,
+      "exact": false
+    },
+    {
+      "pred": 310.0,
+      "gold": 1075.0,
+      "exact": false
+    },
+    {
+      "pred": 1151.0,
+      "gold": 2326.0,
+      "exact": false
+    },
+    {
+      "pred": 1495.0,
+      "gold": 2735.0,
+      "exact": false
+    },
+    {
+      "pred": 683.0,
+      "gold": 1838.0,
+      "exact": false
+    },
+    {
+      "pred": 7.0,
+      "gold": 2741.0,
+      "exact": false
+    },
+    {
+      "pred": 372.0,
+      "gold": 1397.0,
+      "exact": false
+    },
+    {
+      "pred": 492.0,
+      "gold": 1337.0,
+      "exact": false
+    },
+    {
+      "pred": 678.0,
+      "gold": 1243.0,
+      "exact": false
+    },
+    {
+      "pred": 1336.0,
+      "gold": 2211.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 896.0,
+      "exact": false
+    },
+    {
+      "pred": 869.0,
+      "gold": 1419.0,
+      "exact": false
+    },
+    {
+      "pred": 390.0,
+      "gold": 1070.0,
+      "exact": false
+    },
+    {
+      "pred": 162.0,
+      "gold": 1186.0,
+      "exact": false
+    },
+    {
+      "pred": 281.0,
+      "gold": 751.0,
+      "exact": false
+    },
+    {
+      "pred": 1484.0,
+      "gold": 1959.0,
+      "exact": false
+    },
+    {
+      "pred": 500.0,
+      "gold": 1110.0,
+      "exact": false
+    },
+    {
+      "pred": 445.0,
+      "gold": 1310.0,
+      "exact": false
+    },
+    {
+      "pred": 1145.0,
+      "gold": 2080.0,
+      "exact": false
+    },
+    {
+      "pred": 10.0,
+      "gold": 889.0,
+      "exact": false
+    },
+    {
+      "pred": 1933.0,
+      "gold": 1233.0,
+      "exact": false
+    },
+    {
+      "pred": 455.0,
+      "gold": 695.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1852.0,
+      "exact": false
+    }
+  ]
+}
