@@ -1,0 +1,28 @@
+[
+  {
+    "mode": "extraction_only",
+    "budget": 30000,
+    "seed": 0,
+    "emitted_tokens": 30492,
+    "gen_completion_tokens": 23456,
+    "n_examples": 34,
+    "within20": 0.05,
+    "within10": 0.0333,
+    "median_rel_err": 0.6412,
+    "mean_rel_err": 0.6334,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 30000,
+    "seed": 0,
+    "emitted_tokens": 30438,
+    "gen_completion_tokens": 37740,
+    "n_examples": 32,
+    "within20": 0.0333,
+    "within10": 0.0167,
+    "median_rel_err": 0.7573,
+    "mean_rel_err": 0.8851,
+    "exact_acc": 0.0
+  }
+]

@@ -130,7 +130,7 @@ def _diagnose_and_recap(gen: LLM, prompt: str, gold: float, student_pred, concep
 
 def run_feynman(gen: LLM, student: LLM, tok, ledger, budget_tokens: int, seed: int,
                 rules_ctx: str, concepts: list[dict],
-                max_pass_streak: int = 40) -> list[dict]:
+                pass_frac: float = 0.25, max_pass_streak: int = 15) -> list[dict]:
     rng = random.Random(seed)
     out = []
     cheatsheet = ""  # the engine's running, student-facing rule summary (grows)
@@ -139,9 +139,11 @@ def run_feynman(gen: LLM, student: LLM, tok, ledger, budget_tokens: int, seed: i
         info = ra.sample_problem(rng)
         gold = ra.gold_for(info)
         prompt = ra.render_prompt(info, rng.choice(ra._NAMES))
-        # M3 examine: source-blind student attempts with only the cheat-sheet
+        # M3 examine: source-blind student attempts with only the cheat-sheet.
+        # "Pass" uses a GRADED band so the weak student can discriminate easy from
+        # hard problems -> the loop concentrates emit budget on the hard frontier.
         pred = _student_solve(student, prompt, cheatsheet)
-        passed = pred is not None and abs(pred - gold) <= max(TOL, 0.05 * gold)
+        passed = pred is not None and abs(pred - gold) <= max(TOL, pass_frac * gold)
         if passed:
             pass_streak += 1
             if pass_streak < max_pass_streak:

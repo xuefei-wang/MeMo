@@ -32,3 +32,26 @@ Autonomous build, 2026-08-11. Branch `feat/feynman-data-engine`.
 Pivot thin slice to **RuleArena** (spec-designated fallback): rules-in-context is
 tractable for a 3B model (honest headroom expected), and aligns with the
 cheap-fixed-learner efficiency study.
+
+## RuleArena airline (thin slice substrate)
+- Corpus = reference_rules.txt + fee tables (~6k tok). gold via compute_answer oracle.
+- G1 with exact-match: closed 0.0 / ICL 0.0 (3B can't nail multi-step arithmetic).
+  BUT graded metric shows real headroom: median rel-err ICL 0.44 < closed 0.58;
+  within-20% ICL 17% > closed 7%.
+- **Reframe:** G2 is RELATIVE (feynman-data vs extraction-data, same 3B learner) on
+  a GRADED metric -> does not need a high absolute ceiling. Proceed with 3B.
+
+## Pipeline built (all working E2E)
+- data/rulearena.py: loader + synthetic problem sampler + gold oracle.
+- engine/engine.py: extraction_only (uniform) vs feynman_core (source-blind student
+  probe -> skip passes, diagnose+teach+critic on failures = failure-driven curriculum).
+- learner/sft.py (LoRA Qwen2.5-3B via trl) + eval_learner.py (HF batched, graded metrics).
+- scripts/run_grid.py (resumable: gen -> SFT -> eval -> aggregate), plot_curve.py (2-axis).
+- Smoke: feynman burns MORE gen-compute per emitted token than extraction (two-axis story visible).
+
+## Reference floor
+- Base Qwen2.5-3B closed-book (no training), 60 test probs: within20=0.0, median_rel_err=0.65.
+
+## In flight
+- Validation grid: {extraction, feynman} x b=30k x seed0, eval_n=60. Then full grid
+  3 budgets x 2 seeds if signal separates the engines.
