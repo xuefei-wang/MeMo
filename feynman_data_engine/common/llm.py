@@ -35,9 +35,13 @@ class LLM:
 
     def chat(self, messages: list[dict], purpose: str,
              temperature: float | None = None, max_tokens: int = 2048,
-             seed: int | None = None) -> str:
-        """One chat completion, logged. Returns the assistant text."""
+             seed: int | None = None, think: bool | None = None) -> str:
+        """One chat completion, logged. Returns the assistant text (Qwen3 <think>
+        block stripped). `think` toggles Qwen3 thinking mode per call."""
         temp = self.temperature if temperature is None else temperature
+        extra = {}
+        if think is not None:
+            extra["chat_template_kwargs"] = {"enable_thinking": think}
         last_err = None
         for attempt in range(self.max_retries):
             t0 = time.time()
@@ -45,6 +49,7 @@ class LLM:
                 resp = self.client.chat.completions.create(
                     model=self.ep.model, messages=messages,
                     temperature=temp, max_tokens=max_tokens, seed=seed,
+                    extra_body=extra or None,
                 )
                 dt = time.time() - t0
                 u = resp.usage
@@ -53,7 +58,7 @@ class LLM:
                     prompt_tokens=getattr(u, "prompt_tokens", 0),
                     completion_tokens=getattr(u, "completion_tokens", 0),
                     wall_s=dt)
-                return resp.choices[0].message.content or ""
+                return _strip_think(resp.choices[0].message.content or "")
             except Exception as e:  # noqa: BLE001 -- retry any transient server error
                 last_err = e
                 time.sleep(2.0 * (attempt + 1))
@@ -63,6 +68,13 @@ class LLM:
         """Chat + best-effort JSON parse from the reply (handles ```json fences)."""
         txt = self.chat(messages, purpose, **kw)
         return extract_json(txt)
+
+
+def _strip_think(text: str) -> str:
+    """Drop a Qwen3 <think>...</think> block, keep the answer."""
+    if "</think>" in text:
+        text = text.split("</think>")[-1]
+    return text.strip()
 
 
 def extract_json(text: str):
