@@ -123,18 +123,24 @@ def _diagnose_note(gen: LLM, kal: str, eng: str, student_hyp: str,
                     think=False)
 
 
+def _emit_gold_base(gold_pairs, tok, out) -> int:
+    """Emit all gold pairs to BOTH engines as a shared, un-budgeted foundation.
+    Returns the gold-base token count (reported in meta, NOT charged to the budget
+    -- the budget measures only each engine's ADDED synthetic augmentation)."""
+    base_toks = 0
+    for kal, eng in gold_pairs:
+        ex = _pair_example(kal, eng)
+        out.append(ex); base_toks += _count(tok, ex)
+    return base_toks
+
+
 # --------------------------------------------------------------------------- #
 def run_extraction(gen, tok, ledger, budget_tokens, seed, book_ctx, wordlist,
                    gold_pairs, concepts) -> list[dict]:
     rng = random.Random(seed)
     out = []
-    # seed with all gold translation pairs (the strongest direct signal)
-    for kal, eng in gold_pairs:
-        if ledger.emitted_training_tokens >= budget_tokens:
-            return out
-        ex = _pair_example(kal, eng)
-        out.append(ex); ledger.record_emitted(_count(tok, ex), 1)
-    # uniform vocab + one-pass grammar notes until budget
+    ledger.gold_base_tokens = _emit_gold_base(gold_pairs, tok, out)  # shared, free
+    # ADDED synthetic (budget-counted): uniform grammar notes then vocab
     ci = 0
     vocab = _wordlist_examples(wordlist, rng, k=10 ** 6)
     vi = 0
@@ -162,9 +168,12 @@ def run_feynman(gen, student, tok, ledger, budget_tokens, seed, book_ctx,
                 wordlist, gold_pairs, concepts, max_pass_streak: int = 30) -> list[dict]:
     rng = random.Random(seed)
     out = []
+    ledger.gold_base_tokens = _emit_gold_base(gold_pairs, tok, out)  # shared, free
     cheatsheet = ""
     pass_streak = 0
     pool = list(gold_pairs)
+    # ADDED synthetic (budget-counted): failure-targeted notes ONLY (pairs already
+    # in the shared base) -> the ONLY difference from extraction is WHICH notes.
     while ledger.emitted_training_tokens < budget_tokens:
         kal, eng = pool[rng.randrange(len(pool))]
         # M3 examine: source-blind student translates with only the cheat-sheet
@@ -175,12 +184,10 @@ def run_feynman(gen, student, tok, ledger, budget_tokens, seed, book_ctx,
             if pass_streak < max_pass_streak:
                 continue  # already translatable -> don't spend emit budget
         pass_streak = 0
-        # failure -> diagnose missed vocab/grammar (M1/M2), grow cheatsheet, emit
+        # failure -> diagnose missed vocab/grammar (M1/M2), grow cheatsheet, emit note
         note = _diagnose_note(gen, kal, eng, hyp, book_ctx)
         if note and note not in cheatsheet:
             cheatsheet = (cheatsheet + "\n- " + note.strip())[-4000:]
         note_ex = _note_example(f"translate: {kal[:40]}", note)
-        pair_ex = _pair_example(kal, eng)
-        for ex in (note_ex, pair_ex):
-            out.append(ex); ledger.record_emitted(_count(tok, ex), 1)
+        out.append(note_ex); ledger.record_emitted(_count(tok, note_ex), 1)
     return out

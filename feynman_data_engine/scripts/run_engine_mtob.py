@@ -57,13 +57,16 @@ def main():
         for ex in data:
             f.write(json.dumps(ex) + "\n")
     ledger.save(outdir / "ledger.json")
+    gold_base = getattr(ledger, "gold_base_tokens", 0)
     (outdir / "meta.json").write_text(json.dumps({
         "mode": args.mode, "budget": args.budget, "seed": args.seed,
         "direction": args.direction, "n_examples": len(data), "wall_s": round(dt, 1),
-        "emitted_tokens": ledger.emitted_training_tokens,
+        "emitted_synthetic_tokens": ledger.emitted_training_tokens,  # budget axis
+        "gold_base_tokens": gold_base,  # shared, un-budgeted foundation
+        "total_train_tokens": ledger.emitted_training_tokens + gold_base,
         "total_gen_completion_tokens": ledger.total_generator_completion_tokens}, indent=2))
-    print(f"[mtob-engine] done: {len(data)} ex, {ledger.emitted_training_tokens} emit toks, "
-          f"{ledger.total_generator_completion_tokens} gen toks, {dt:.0f}s")
+    print(f"[mtob-engine] done: {len(data)} ex, synth={ledger.emitted_training_tokens} "
+          f"gold_base={gold_base} gen={ledger.total_generator_completion_tokens} {dt:.0f}s")
 
 
 if __name__ == "__main__":
