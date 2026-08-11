@@ -32,15 +32,25 @@ def load_model(base: str, adapter: str | None):
     return tok, model
 
 
+def _template(tok, msgs, enable_thinking):
+    kw = {}
+    if enable_thinking is not None:  # Qwen3 thinking toggle; ignored by other templates
+        kw["enable_thinking"] = enable_thinking
+    try:
+        return tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
+    except TypeError:
+        return tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+
+
 @torch.no_grad()
-def generate_batch(tok, model, prompts: list[list[dict]], max_new=700, bs=16):
+def generate_batch(tok, model, prompts: list[list[dict]], max_new=700, bs=16,
+                   max_input_len=4096, enable_thinking=None):
     outs = []
     for i in range(0, len(prompts), bs):
         chunk = prompts[i:i + bs]
-        texts = [tok.apply_chat_template(m, tokenize=False, add_generation_prompt=True)
-                 for m in chunk]
+        texts = [_template(tok, m, enable_thinking) for m in chunk]
         enc = tok(texts, return_tensors="pt", padding=True, truncation=True,
-                  max_length=4096).to(model.device)
+                  max_length=max_input_len).to(model.device)
         gen = model.generate(**enc, max_new_tokens=max_new, do_sample=False,
                              pad_token_id=tok.pad_token_id)
         for j in range(len(chunk)):
@@ -56,6 +66,10 @@ def main():
     ap.add_argument("--level", type=int, default=0)
     ap.add_argument("--n", type=int, default=100)
     ap.add_argument("--context", choices=["none", "gold"], default="none")
+    ap.add_argument("--bs", type=int, default=16)
+    ap.add_argument("--max_new", type=int, default=700)
+    ap.add_argument("--max_input_len", type=int, default=4096)
+    ap.add_argument("--no_think", action="store_true", help="Qwen3: disable thinking mode")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
@@ -63,8 +77,11 @@ def main():
     ctx = ra.load_corpus(True) if args.context == "gold" else None
     prompts = [build_prompt(p, ctx) for p in probs]
     tok, model = load_model(args.base, args.adapter)
-    print(f"[eval] {len(probs)} problems, adapter={args.adapter}")
-    outs = generate_batch(tok, model, prompts)
+    enable_thinking = False if args.no_think else None
+    print(f"[eval] {len(probs)} problems, base={args.base} adapter={args.adapter} "
+          f"ctx={args.context} think={enable_thinking}")
+    outs = generate_batch(tok, model, prompts, max_new=args.max_new, bs=args.bs,
+                          max_input_len=args.max_input_len, enable_thinking=enable_thinking)
 
     results = []
     for p, o in zip(probs, outs):
