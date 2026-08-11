@@ -1,0 +1,22 @@
+{
+  "run_name": "mtob_feynman_core_b20000_s3",
+  "axis_emitted_training_tokens": 20108,
+  "axis_total_generator_completion_tokens": 17090,
+  "axis_total_generator_tokens": 4221010,
+  "emitted_examples": 176,
+  "total_calls": 354,
+  "by_purpose": {
+    "probe": {
+      "calls": 178,
+      "prompt_tokens": 188478,
+      "completion_tokens": 2372,
+      "wall_s": 68.65652513504028
+    },
+    "diagnose": {
+      "calls": 176,
+      "prompt_tokens": 4015442,
+      "completion_tokens": 14718,
+      "wall_s": 648.1760056018829
+    }
+  }
+}

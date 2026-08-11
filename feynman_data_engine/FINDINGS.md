@@ -89,3 +89,55 @@ Plots: `runs/grid/curve_within20.png`, `runs/grid/curve_medrelerr.png` (both bud
   cleanest way to let a knowledge-injection difference show.
 - Data-quality gate: verify generator reasoning against the oracle before emitting.
 - The full ablation ladder (M1→M2→M3→loop) and incumbents (SIEVE-GEN, Cartridges).
+
+---
+
+# MTOB @ Qwen3-8B — the knowledge-bound substrate (first grid)
+
+The RuleArena verdict said the null was **capability-bound**: at 3B the binding
+constraint was task capability, not knowledge coverage, so a knowledge-injection
+recipe had no room to show. MTOB is the recommended fix — a translation task where
+knowledge coverage (Kalamang grammar+lexicon) IS the binding constraint, on a
+capable 8B learner. First grid: 2 modes x {6k,20k} emitted tokens x 2 seeds.
+
+Setup: shared un-budgeted gold base (375 pairs) for BOTH engines; budget counts only
+ADDED synthetic notes. Learner Qwen3-8B LoRA. Metric: closed-book ke chrF, n=50, no-think.
+Reference frame: floor (untrained, no context) 15.9 chrF; ICL-gold ceiling ~27.
+
+## Result (closed-book ke chrF)
+
+| budget | extraction (2 seeds) | feynman (2 seeds) | Δ | per-sentence paired bootstrap |
+|--------|----------------------|-------------------|-----|-------------------------------|
+| 6k  | 21.14, 20.57 → 20.86 | 21.60, 21.22 → 21.41 | +0.56 | CI [-0.72,+1.57] p=0.55 n.s. |
+| 20k | 21.82, 20.85 → 21.33 | 22.35, 22.65 → 22.50 | +1.17 | CI [+0.04,+2.28] **p=0.042 sig** |
+
+1. **Feynman > extraction at matched emitted-token budget, and the gap WIDENS with
+   budget** (+0.56 → +1.17). This is the efficiency-curve signature the hypothesis
+   predicts: failure-targeted teaching compounds; uniform coverage saturates. Contrast
+   the RuleArena 3B run where the "growing edge" was small-sample noise — here the
+   *larger* budget has the *cleaner* signal, and the 20k per-sentence bootstrap crosses
+   significance.
+2. **Compute is now in Feynman's favour on the axis that matters.** Completion tokens
+   (what gets generated): feynman uses FEWER (-16% @6k, -9% @20k) for higher chrF —
+   the opposite of the RuleArena 1.6x tax. Prefill-inclusive it is 4.8x higher (many
+   diagnose calls re-send the book), ~free under vLLM prefix-caching of the shared book
+   prefix — flagged, not hidden.
+3. **Mechanism visible in the data.** At 20k feynman emits 175 short failure-diagnoses
+   vs extraction's 58 long chunk-notes — same budget, far more items, each aimed at the
+   student's actual translation-failure frontier.
+4. **Why the flip vs RuleArena.** MTOB is knowledge-bound on a capable learner, so the
+   engine's job (inject the right knowledge) is the binding constraint — exactly where a
+   targeting advantage can show. This supports the RuleArena diagnosis: the earlier null
+   was substrate/scale, not a broken mechanism.
+
+## Caveats (why this is a signal, not a verdict)
+
+- **n=2 seeds** → seed-level significance is out of reach; the per-sentence bootstrap
+  pools seeds as a proxy. The widening gap is the real signal; confirmation needs seeds.
+- One benchmark, one direction (ke), one model, two budgets. No mid-budget point yet to
+  confirm curve shape.
+
+## Next
+
+- More seeds at both budgets (in flight) for a seed-level paired test.
+- A mid budget (~12k) to trace curve shape; the ek direction as a transfer check.

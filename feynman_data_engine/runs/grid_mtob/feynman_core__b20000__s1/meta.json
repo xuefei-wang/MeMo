@@ -1,0 +1,12 @@
+{
+  "mode": "feynman_core",
+  "budget": 20000,
+  "seed": 1,
+  "direction": "ke",
+  "n_examples": 551,
+  "wall_s": 712.8,
+  "emitted_synthetic_tokens": 20105,
+  "gold_base_tokens": 20972,
+  "total_train_tokens": 41077,
+  "total_gen_completion_tokens": 16523
+}

@@ -1,0 +1,16 @@
+{
+  "run_name": "mtob_extraction_only_b6000_s3",
+  "axis_emitted_training_tokens": 6405,
+  "axis_total_generator_completion_tokens": 6130,
+  "axis_total_generator_tokens": 283282,
+  "emitted_examples": 12,
+  "total_calls": 12,
+  "by_purpose": {
+    "teach": {
+      "calls": 12,
+      "prompt_tokens": 277152,
+      "completion_tokens": 6130,
+      "wall_s": 254.08429384231567
+    }
+  }
+}

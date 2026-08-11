@@ -6,3 +6,5 @@ runs/*.log
 runs/**/samples*.json
 __pycache__/
 *.pyc
+runs/**/adapter/
+runs/**/*.log

@@ -1,0 +1,12 @@
+{
+  "mode": "extraction_only",
+  "budget": 6000,
+  "seed": 3,
+  "direction": "ke",
+  "n_examples": 387,
+  "wall_s": 254.2,
+  "emitted_synthetic_tokens": 6405,
+  "gold_base_tokens": 20972,
+  "total_train_tokens": 27377,
+  "total_gen_completion_tokens": 6130
+}

@@ -1,0 +1,71 @@
+[
+  {
+    "mode": "extraction_only",
+    "budget": 6000,
+    "seed": 0,
+    "synth_tokens": 6423,
+    "gen_tokens": 6144,
+    "n_notes": 12,
+    "chrf": 21.142
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 6000,
+    "seed": 1,
+    "synth_tokens": 6422,
+    "gen_tokens": 6144,
+    "n_notes": 12,
+    "chrf": 20.57
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 20000,
+    "seed": 0,
+    "synth_tokens": 20013,
+    "gen_tokens": 18432,
+    "n_notes": 58,
+    "chrf": 21.823
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 20000,
+    "seed": 1,
+    "error": "[Errno 2] No such file or directory: '/data/xwang3/Projects/MeMo/feynman_data_engine/runs/grid_mtob/extraction_only__b20000__s1/eval.json'"
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 6000,
+    "seed": 0,
+    "synth_tokens": 6197,
+    "gen_tokens": 5228,
+    "n_notes": 58,
+    "chrf": 21.602
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 6000,
+    "seed": 1,
+    "synth_tokens": 6101,
+    "gen_tokens": 5076,
+    "n_notes": 56,
+    "chrf": 21.224
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 20000,
+    "seed": 0,
+    "synth_tokens": 20064,
+    "gen_tokens": 17037,
+    "n_notes": 174,
+    "chrf": 22.349
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 20000,
+    "seed": 1,
+    "synth_tokens": 20105,
+    "gen_tokens": 16523,
+    "n_notes": 176,
+    "chrf": 22.652
+  }
+]
