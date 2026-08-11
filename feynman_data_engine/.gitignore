@@ -8,3 +8,7 @@ __pycache__/
 *.pyc
 runs/**/adapter/
 runs/**/*.log
+runs/**/dataset.jsonl
+runs/**/eval.json
+runs/**/ledger.json
+runs/**/meta.json
