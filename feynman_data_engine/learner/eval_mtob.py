@@ -12,10 +12,19 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import re  # noqa: E402
+
 from data import mtob  # noqa: E402
 from eval.translate import build_prompt, _clean  # noqa: E402
 from eval.chrf import corpus_chrf, sentence_chrf  # noqa: E402
 from learner.eval_learner import load_model, generate_batch  # noqa: E402
+
+
+def strip_think(text: str) -> str:
+    """Drop a Qwen3 <think>...</think> block; keep the post-thinking answer."""
+    if "</think>" in text:
+        text = text.split("</think>")[-1]
+    return re.sub(r"^\s*<think>.*", "", text, flags=re.DOTALL).strip() or text.strip()
 
 
 def main():
@@ -47,7 +56,7 @@ def main():
     outs = generate_batch(tok, model, prompts, max_new=args.max_new, bs=args.bs,
                           max_input_len=args.max_input_len, enable_thinking=enable_thinking)
 
-    hyps = [_clean(o) for o in outs]
+    hyps = [_clean(strip_think(o)) for o in outs]
     refs = [p.target for p in test]
     score = corpus_chrf(hyps, refs)
     samples = [{"src": p.source, "hyp": h, "ref": r,
