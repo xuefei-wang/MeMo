@@ -87,6 +87,25 @@ Read:
 - Net: weak/null, slight feynman edge on within20 that GROWS with budget -> motivates
   a higher-budget wave (the "needs budget to pay off" hypothesis).
 
+## Capability + contamination gate (model selection) — RESOLVED
+Two gates must BOTH hold: closed-book LOW (not contaminated) AND ICL-gold HIGH (capable).
+Field standard learner (SIEVE Qwen3-8B, Cartridges/EntiGraph Llama-3-8B) = 8B-class.
+
+| setup | closed-book | ICL-gold | band | verdict |
+|---|---|---|---|---|
+| MTOB @ Qwen2.5-3B (KE) | 14.7 | 15.7 chrF | 1.0 | FAIL: capability-bound |
+| RuleArena airline @ Qwen3-14B (no-think) | .26 w20 | .22 w20 | ~0 | FAIL: contaminated |
+| RuleArena airline @ Qwen3-14B (think) | .15 w20 | .125 w20 | ~0 | FAIL: contaminated (holds w/ thinking) |
+| **MTOB @ Qwen3-8B (KE, thinking)** | **14.3** | **27.1 chrF** | **+12.8 (1.9x)** | **CLEARS BOTH** |
+
+- MTOB@8B: real translations (chrF 75/63/61 on best sentences; median per-sent 22). Model
+  looks up wordlist glosses + applies grammar in-context. Kalamang = contamination-free.
+- Gotcha: Qwen3 no-think ECHOES the source (degenerate); thinking ON is required, and the
+  eval must strip <think>...</think> before chrF (learner/eval_mtob.py strip_think).
+- DECISION: real study substrate = MTOB (KE) + Qwen3-8B learner + chrF. ~13 chrF resolution.
+- Serving note: vLLM 0.6.6 can't serve Qwen3 -> eval/train via HF; for fast data-gen use a
+  Qwen2-arch generator (vLLM-servable) or upgrade vLLM.
+
 ## Grid final (3 budgets x 4 seeds) — the honest result
 - 2-seed run LOOKED like a growing monotonic edge (+.005->+.010->+.025). Adding
   seeds 2,3 FLATTENED it: 4-seed within20 diff = +.008 / +.017 / +.008. The 200k

@@ -1,0 +1,515 @@
+{
+  "summary": {
+    "adapter": null,
+    "level": 0,
+    "n": 100,
+    "exact_acc": 0.01,
+    "parse_rate": 1.0,
+    "within10": 0.08,
+    "within20": 0.22,
+    "median_rel_err": 0.8037,
+    "mean_rel_err": 0.6146
+  },
+  "results": [
+    {
+      "pred": 1365.0,
+      "gold": 1245.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1166.0,
+      "exact": false
+    },
+    {
+      "pred": 1039.0,
+      "gold": 949.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 1513.0,
+      "exact": false
+    },
+    {
+      "pred": 29.0,
+      "gold": 1434.0,
+      "exact": false
+    },
+    {
+      "pred": 2189.0,
+      "gold": 2314.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 1131.0,
+      "exact": false
+    },
+    {
+      "pred": 1637.0,
+      "gold": 957.0,
+      "exact": false
+    },
+    {
+      "pred": 696.0,
+      "gold": 1141.0,
+      "exact": false
+    },
+    {
+      "pred": 1431.0,
+      "gold": 1261.0,
+      "exact": false
+    },
+    {
+      "pred": 6.0,
+      "gold": 1279.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 1203.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 992.0,
+      "exact": false
+    },
+    {
+      "pred": 98.0,
+      "gold": 1097.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1317.0,
+      "exact": false
+    },
+    {
+      "pred": 6.0,
+      "gold": 1017.0,
+      "exact": false
+    },
+    {
+      "pred": 105.0,
+      "gold": 1300.0,
+      "exact": false
+    },
+    {
+      "pred": 1686.0,
+      "gold": 1321.0,
+      "exact": false
+    },
+    {
+      "pred": 35.0,
+      "gold": 1377.0,
+      "exact": false
+    },
+    {
+      "pred": 450.0,
+      "gold": 2524.0,
+      "exact": false
+    },
+    {
+      "pred": 162.0,
+      "gold": 972.0,
+      "exact": false
+    },
+    {
+      "pred": 716.0,
+      "gold": 846.0,
+      "exact": false
+    },
+    {
+      "pred": 868.0,
+      "gold": 1078.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1882.0,
+      "exact": false
+    },
+    {
+      "pred": 2268.0,
+      "gold": 1538.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1183.0,
+      "exact": false
+    },
+    {
+      "pred": 853.0,
+      "gold": 963.0,
+      "exact": false
+    },
+    {
+      "pred": 50.0,
+      "gold": 1277.0,
+      "exact": false
+    },
+    {
+      "pred": 30.0,
+      "gold": 970.0,
+      "exact": false
+    },
+    {
+      "pred": 105.0,
+      "gold": 1643.0,
+      "exact": false
+    },
+    {
+      "pred": 1950.0,
+      "gold": 1300.0,
+      "exact": false
+    },
+    {
+      "pred": 1704.0,
+      "gold": 1104.0,
+      "exact": false
+    },
+    {
+      "pred": 1490.0,
+      "gold": 1315.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 1022.0,
+      "exact": false
+    },
+    {
+      "pred": 532.0,
+      "gold": 1892.0,
+      "exact": false
+    },
+    {
+      "pred": 1208.0,
+      "gold": 1098.0,
+      "exact": false
+    },
+    {
+      "pred": 30.0,
+      "gold": 1742.0,
+      "exact": false
+    },
+    {
+      "pred": 677.0,
+      "gold": 1857.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1075.0,
+      "exact": false
+    },
+    {
+      "pred": 2326.0,
+      "gold": 2326.0,
+      "exact": true
+    },
+    {
+      "pred": 16.0,
+      "gold": 2735.0,
+      "exact": false
+    },
+    {
+      "pred": 2188.0,
+      "gold": 1838.0,
+      "exact": false
+    },
+    {
+      "pred": 1.0,
+      "gold": 2741.0,
+      "exact": false
+    },
+    {
+      "pred": 1487.0,
+      "gold": 1397.0,
+      "exact": false
+    },
+    {
+      "pred": 45.0,
+      "gold": 1337.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 1243.0,
+      "exact": false
+    },
+    {
+      "pred": 2086.0,
+      "gold": 2211.0,
+      "exact": false
+    },
+    {
+      "pred": 5.0,
+      "gold": 896.0,
+      "exact": false
+    },
+    {
+      "pred": 699.0,
+      "gold": 1419.0,
+      "exact": false
+    },
+    {
+      "pred": 30.0,
+      "gold": 1070.0,
+      "exact": false
+    },
+    {
+      "pred": 716.0,
+      "gold": 1186.0,
+      "exact": false
+    },
+    {
+      "pred": 600.0,
+      "gold": 751.0,
+      "exact": false
+    },
+    {
+      "pred": 2259.0,
+      "gold": 1959.0,
+      "exact": false
+    },
+    {
+      "pred": 1400.0,
+      "gold": 1110.0,
+      "exact": false
+    },
+    {
+      "pred": 1045.0,
+      "gold": 1310.0,
+      "exact": false
+    },
+    {
+      "pred": 1200.0,
+      "gold": 2080.0,
+      "exact": false
+    },
+    {
+      "pred": 899.0,
+      "gold": 889.0,
+      "exact": false
+    },
+    {
+      "pred": 400.0,
+      "gold": 1233.0,
+      "exact": false
+    },
+    {
+      "pred": 75.0,
+      "gold": 695.0,
+      "exact": false
+    },
+    {
+      "pred": 70.0,
+      "gold": 1852.0,
+      "exact": false
+    },
+    {
+      "pred": 37.0,
+      "gold": 2510.0,
+      "exact": false
+    },
+    {
+      "pred": 1093.0,
+      "gold": 898.0,
+      "exact": false
+    },
+    {
+      "pred": 75.0,
+      "gold": 1241.0,
+      "exact": false
+    },
+    {
+      "pred": 53.0,
+      "gold": 991.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1496.0,
+      "exact": false
+    },
+    {
+      "pred": 65.0,
+      "gold": 1702.0,
+      "exact": false
+    },
+    {
+      "pred": 70.0,
+      "gold": 1256.0,
+      "exact": false
+    },
+    {
+      "pred": 4.0,
+      "gold": 1515.0,
+      "exact": false
+    },
+    {
+      "pred": 1785.0,
+      "gold": 1490.0,
+      "exact": false
+    },
+    {
+      "pred": 50.0,
+      "gold": 1174.0,
+      "exact": false
+    },
+    {
+      "pred": 1710.0,
+      "gold": 1350.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1145.0,
+      "exact": false
+    },
+    {
+      "pred": 1119.0,
+      "gold": 1279.0,
+      "exact": false
+    },
+    {
+      "pred": 2896.0,
+      "gold": 2546.0,
+      "exact": false
+    },
+    {
+      "pred": 0.0,
+      "gold": 903.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 1019.0,
+      "exact": false
+    },
+    {
+      "pred": 2.0,
+      "gold": 1845.0,
+      "exact": false
+    },
+    {
+      "pred": 100.0,
+      "gold": 2279.0,
+      "exact": false
+    },
+    {
+      "pred": 180.0,
+      "gold": 1041.0,
+      "exact": false
+    },
+    {
+      "pred": 1547.0,
+      "gold": 1227.0,
+      "exact": false
+    },
+    {
+      "pred": 400.0,
+      "gold": 1165.0,
+      "exact": false
+    },
+    {
+      "pred": 200.0,
+      "gold": 2085.0,
+      "exact": false
+    },
+    {
+      "pred": 1670.0,
+      "gold": 1390.0,
+      "exact": false
+    },
+    {
+      "pred": 2003.0,
+      "gold": 1588.0,
+      "exact": false
+    },
+    {
+      "pred": 2.0,
+      "gold": 969.0,
+      "exact": false
+    },
+    {
+      "pred": 2301.0,
+      "gold": 1826.0,
+      "exact": false
+    },
+    {
+      "pred": 150.0,
+      "gold": 1392.0,
+      "exact": false
+    },
+    {
+      "pred": 1519.0,
+      "gold": 1399.0,
+      "exact": false
+    },
+    {
+      "pred": 1074.0,
+      "gold": 1394.0,
+      "exact": false
+    },
+    {
+      "pred": 53.0,
+      "gold": 1275.0,
+      "exact": false
+    },
+    {
+      "pred": 2397.0,
+      "gold": 1847.0,
+      "exact": false
+    },
+    {
+      "pred": 1623.0,
+      "gold": 1433.0,
+      "exact": false
+    },
+    {
+      "pred": 3605.0,
+      "gold": 1780.0,
+      "exact": false
+    },
+    {
+      "pred": 499.0,
+      "gold": 599.0,
+      "exact": false
+    },
+    {
+      "pred": 400.0,
+      "gold": 1227.0,
+      "exact": false
+    },
+    {
+      "pred": 1049.0,
+      "gold": 1349.0,
+      "exact": false
+    },
+    {
+      "pred": 1189.0,
+      "gold": 1054.0,
+      "exact": false
+    },
+    {
+      "pred": 70.0,
+      "gold": 1050.0,
+      "exact": false
+    },
+    {
+      "pred": 400.0,
+      "gold": 1417.0,
+      "exact": false
+    },
+    {
+      "pred": 62.0,
+      "gold": 1421.0,
+      "exact": false
+    }
+  ]
+}
