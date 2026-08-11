@@ -33,20 +33,25 @@ _NUM = re.compile(r"FINAL:\s*\$?\s*([0-9][0-9,]*(?:\.[0-9]+)?)")
 _ANYNUM = re.compile(r"\$?\s*([0-9][0-9,]*(?:\.[0-9]+)?)")
 
 
+_MAX_PLAUSIBLE = 100000.0  # realistic totals are < ~10k; guard the fallback
+
+
 def extract_total(out: str) -> float | None:
     m = _NUM.search(out)
-    if not m:
-        # fallback: last number in the text
-        nums = _ANYNUM.findall(out)
-        if not nums:
-            return None
-        m_val = nums[-1]
-    else:
-        m_val = m.group(1)
-    try:
-        return float(m_val.replace(",", ""))
-    except ValueError:
-        return None
+    if m:
+        try:
+            return float(m.group(1).replace(",", ""))
+        except ValueError:
+            pass
+    # fallback: last PLAUSIBLE number in the text (ignore absurd IDs/years/dims)
+    for tok in reversed(_ANYNUM.findall(out)):
+        try:
+            v = float(tok.replace(",", ""))
+        except ValueError:
+            continue
+        if 0 <= v <= _MAX_PLAUSIBLE:
+            return v
+    return None
 
 
 def run_eval(llm: LLM, problems: list[rulearena.Problem], context: str | None = None,

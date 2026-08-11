@@ -52,6 +52,41 @@ cheap-fixed-learner efficiency study.
 ## Reference floor
 - Base Qwen2.5-3B closed-book (no training), 60 test probs: within20=0.0, median_rel_err=0.65.
 
+## First signal (validation, pre-fix, 30k/seed0, eval_n=60)
+- extraction: within20=0.050, medRelErr=0.641, gen=23456
+- feynman:    within20=0.033, medRelErr=0.757, gen=37740  (WORSE + 60% more compute)
+- Diagnosis: NOT just noise. At low budget both train on ~identical data (same seed
+  -> same problems; 1.5B student failed ~everything at near-exact threshold -> feynman
+  never skipped -> == extraction + diagnose/recap overhead). Failure loop couldn't bite.
+
+## Root-cause fix
+- Loosened feynman "pass" to a graded 25% band. Student now discriminates: skipped
+  3/16 easy problems in a 12k smoke -> budget concentrates on the hard frontier.
+- Gen-compute overhead ~1.37x emitted (two-axis cost confirmed).
+
+## Base references (n=100, learner Qwen2.5-3B, extractor-fixed)
+- closed-book floor: within20=0.02, medRelErr=0.66.
+- ICL-gold ceiling UNRELIABLE on 3B: rules (6k tok) exceed eval_learner max_length
+  4096 -> problem truncated -> garbage. 3B can't use ICL anyway (phase0). Use floor only.
+
+## Grid wave 1 results (post-fix, mean over 2 seeds; floor within20=0.02, medRelErr=0.66)
+| cell | within20 | medRelErr | gen tokens |
+|---|---|---|---|
+| extraction 30k | 0.045 | 0.744 | 23.6k |
+| feynman 30k    | 0.050 | 0.729 | 38.5k |
+| extraction 90k | 0.060 | 0.776 | 69k |
+| feynman 90k    | 0.070 | 0.840 | 113k |
+
+Read:
+- within20 (primary): feynman >= extraction at both budgets; feynman scales steeper
+  (0.050->0.070 vs 0.045->0.060). BUT seed variance (extraction 30k: 0.02 vs 0.07)
+  SWAMPS the gap -> not significant at 2 seeds.
+- feynman costs ~1.6x generator compute -> on the gen-token axis, extraction wins.
+- SFT RAISES medRelErr above untrained base (0.66): training adds variance
+  (more near-hits AND more big misses), esp. at 90k.
+- Net: weak/null, slight feynman edge on within20 that GROWS with budget -> motivates
+  a higher-budget wave (the "needs budget to pay off" hypothesis).
+
 ## In flight
-- Validation grid: {extraction, feynman} x b=30k x seed0, eval_n=60. Then full grid
-  3 budgets x 2 seeds if signal separates the engines.
+- Grid wave 2: adds b=200k x {seed0,seed1} (resumable). Tests whether feynman's
+  within20 edge grows enough to clear noise / repay its compute premium.
