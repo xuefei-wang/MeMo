@@ -44,8 +44,8 @@ A relative comparison needs metric *resolution*, not a high absolute ceiling.
 | 30k | feynman | 0.050 | 0.729 | 38.5k |
 | 90k | extraction | 0.060 | 0.776 | 69k |
 | 90k | feynman | 0.070 | 0.840 | 113k |
-| 200k | extraction | _wave 2 pending_ | | |
-| 200k | feynman | _wave 2 pending_ | | |
+| 200k | extraction | 0.100 | 0.642 | 154k |
+| 200k | feynman | **0.125** | 0.719 | 231k |
 
 **Bootstrap (pooled per-problem across seeds, 95% CI):**
 
@@ -53,21 +53,28 @@ A relative comparison needs metric *resolution*, not a high absolute ceiling.
 |---|---|---|---|
 | 30k | +0.005 [−0.035, +0.045] | no (CI spans 0) | 1.63× |
 | 90k | +0.010 [−0.035, +0.055] | no (CI spans 0) | 1.63× |
+| 200k | **+0.025** [−0.035, +0.090] | no (CI spans 0) | 1.50× |
 
-## Honest read (through wave 1)
+Plots: `runs/grid/curve_within20.png`, `runs/grid/curve_medrelerr.png` (both budget axes).
 
-1. **Null on the primary metric so far.** Feynman is marginally ahead on within20 and
-   scales slightly steeper with budget, but the seed variance swamps the gap — the
-   bootstrap CI spans 0 at both budgets. No significant win yet.
-2. **The loop is not free.** Feynman spends a consistent **1.63× generator compute**;
-   on the compute axis its emitted-token edge disappears (see `runs/grid/wave1_within20.png`,
-   right panel).
-3. **SFT adds variance.** Training *raises* median-rel-err above the untrained base —
-   the learner attempts the full computation and is confidently wrong more often, while
-   occasionally landing within 20%. A data-quality ceiling: the 3B generator's worked
-   solutions have correct FINAL answers (oracle-injected) but sometimes flawed reasoning.
-4. **The one real trend** — feynman's within20 edge *grows* with budget (0.050→0.070 vs
-   0.045→0.060) — is what wave 2 (200k) tests directly.
+## Honest read (full 3-point curve)
+
+1. **A consistent, *growing* advantage — but not yet significant.** Feynman's within20
+   edge widens monotonically with budget: **+0.005 → +0.010 → +0.025**. At 200k feynman
+   is ~**25% relatively better** (0.125 vs 0.100), and both engines finally lift clearly
+   off the floor (0.02). The direction is stable across all three budgets and both seeds —
+   but the bootstrap CI still spans 0 (2 seeds is under-powered for a ~2-point effect).
+2. **The loop is not free.** Feynman spends **1.5–1.6× generator compute**. On the
+   *compute* axis (right panel) its edge shrinks and extraction is more efficient in the
+   mid-range — the emitted-token win is partly bought with extra generator calls.
+3. **Training helps most at scale.** At 200k, extraction's median-rel-err (0.64) finally
+   returns to ~the untrained floor (0.66) and within20 doubles vs 90k — the 3B needs
+   substantial data before the procedure sticks. At low budget SFT mostly adds variance.
+4. **Verdict:** *promising but unconfirmed.* The Feynman recipe shows the predicted
+   budget-scaling behaviour (its advantage grows exactly where failure-driven curricula
+   should help — once there's enough budget to skip the easy and concentrate on the hard),
+   but this thin slice at 3B scale cannot yet call it a win. The right next step is power
+   (more seeds) and a task-capable learner, not a new mechanism.
 
 ## What this de-risked (and what it did not)
 

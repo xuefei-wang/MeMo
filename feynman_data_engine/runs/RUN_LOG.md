@@ -87,6 +87,13 @@ Read:
 - Net: weak/null, slight feynman edge on within20 that GROWS with budget -> motivates
   a higher-budget wave (the "needs budget to pay off" hypothesis).
 
-## In flight
-- Grid wave 2: adds b=200k x {seed0,seed1} (resumable). Tests whether feynman's
-  within20 edge grows enough to clear noise / repay its compute premium.
+## Grid wave 2 (200k added) — full 3-point curve
+- within20 (mean/2 seeds): 30k ext .045/fey .050 | 90k .060/.070 | 200k .100/.125.
+- feynman-ext diff GROWS: +0.005 -> +0.010 -> +0.025 (monotonic, both seeds same sign).
+- Bootstrap CIs still span 0 (under-powered at 2 seeds); compute premium 1.5-1.6x.
+- At 200k both engines lift off floor; extraction medRelErr 0.64 ~ base floor 0.66.
+- Verdict: PROMISING but UNCONFIRMED. Feynman shows the predicted budget-scaling
+  (advantage grows where failure-driven curricula should help). Next: more seeds +
+  task-capable learner (>=14B), not a new mechanism.
+- Deliverables: FINDINGS.md, runs/grid/curve_{within20,medrelerr}.png, results.json,
+  scripts/{run_grid,plot_curve,analyze}.py. All committed.

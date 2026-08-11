@@ -52,6 +52,32 @@
     "exact_acc": 0.0
   },
   {
+    "mode": "extraction_only",
+    "budget": 200000,
+    "seed": 0,
+    "emitted_tokens": 200831,
+    "gen_completion_tokens": 153915,
+    "n_examples": 220,
+    "within20": 0.12,
+    "within10": 0.05,
+    "median_rel_err": 0.6775,
+    "mean_rel_err": 0.6452,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 200000,
+    "seed": 1,
+    "emitted_tokens": 200681,
+    "gen_completion_tokens": 153571,
+    "n_examples": 223,
+    "within20": 0.08,
+    "within10": 0.05,
+    "median_rel_err": 0.6064,
+    "mean_rel_err": 0.5988,
+    "exact_acc": 0.0
+  },
+  {
     "mode": "feynman_core",
     "budget": 30000,
     "seed": 0,
@@ -101,6 +127,32 @@
     "within10": 0.04,
     "median_rel_err": 0.8446,
     "mean_rel_err": 0.8106,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 200000,
+    "seed": 0,
+    "emitted_tokens": 200573,
+    "gen_completion_tokens": 238158,
+    "n_examples": 215,
+    "within20": 0.13,
+    "within10": 0.05,
+    "median_rel_err": 0.6022,
+    "mean_rel_err": 0.5992,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 200000,
+    "seed": 1,
+    "emitted_tokens": 200371,
+    "gen_completion_tokens": 224230,
+    "n_examples": 209,
+    "within20": 0.12,
+    "within10": 0.03,
+    "median_rel_err": 0.8359,
+    "mean_rel_err": 1.2679,
     "exact_acc": 0.0
   }
 ]
