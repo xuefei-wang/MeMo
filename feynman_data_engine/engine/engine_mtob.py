@@ -33,6 +33,21 @@ TRANSLATE_SYS = ("You are an expert Kalamang translator. Translate the given "
                  "translation on one line.")
 
 
+def chunk_book(text: str, chunk_chars: int = 2000) -> list[dict]:
+    """Chunk the (header-less) grammar book into ~chunk_chars pieces on paragraph
+    boundaries, so the extraction baseline has real concepts to teach."""
+    lines = [ln for ln in text.split("\n") if ln.strip()]
+    chunks, buf = [], ""
+    for ln in lines:
+        if len(buf) + len(ln) > chunk_chars and buf:
+            chunks.append(buf); buf = ln
+        else:
+            buf = (buf + "\n" + ln) if buf else ln
+    if buf:
+        chunks.append(buf)
+    return [{"title": f"grammar chunk {i+1}", "text": c} for i, c in enumerate(chunks)]
+
+
 def _strip_think(text: str) -> str:
     if "</think>" in text:
         text = text.split("</think>")[-1]

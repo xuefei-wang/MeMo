@@ -12,8 +12,7 @@ from transformers import AutoTokenizer  # noqa: E402
 from common.ledger import Ledger  # noqa: E402
 from common.llm import LLM, Endpoint  # noqa: E402
 from data import mtob  # noqa: E402
-from engine.engine import split_concepts  # noqa: E402
-from engine.engine_mtob import run_extraction, run_feynman  # noqa: E402
+from engine.engine_mtob import run_extraction, run_feynman, chunk_book  # noqa: E402
 
 
 def main():
@@ -40,7 +39,7 @@ def main():
     book_ctx = mtob.load_grammar_book("medium")[:args.book_chars]
     wordlist = mtob.load_wordlist()
     gold_pairs = [(p.source, p.target) for p in mtob.train_as_pairs(args.direction)]
-    concepts = split_concepts(book_ctx)
+    concepts = chunk_book(book_ctx, chunk_chars=2000)
     print(f"[mtob-engine] mode={args.mode} budget={args.budget} seed={args.seed} "
           f"gold_pairs={len(gold_pairs)} concepts={len(concepts)} vocab={len(wordlist)}")
 
