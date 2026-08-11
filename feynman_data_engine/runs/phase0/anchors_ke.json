@@ -1,0 +1,645 @@
+{
+  "result": {
+    "direction": "ke",
+    "model": "gen",
+    "book_size": "medium",
+    "closed_book_chrf": 14.73,
+    "icl_gold_chrf": 15.719,
+    "headroom_band": 0.989,
+    "verdict": "NARROW -- consider swapping base"
+  },
+  "closed_book": {
+    "corpus_chrf": 14.73,
+    "n": 50,
+    "samples": [
+      {
+        "src": "Wa me kariak kaia kon untuk emumur kalo tumun amkeiret mu wara nanet.",
+        "hyp": "I am not old enough to marry my cousin on the other side.",
+        "ref": "This is blood medicine for mothers, when they have given birth they drink this.",
+        "chrf": 16.94
+      },
+      {
+        "src": "Mu bo Tamisengga som dande yecie.",
+        "hyp": "You are sick because of the rain.",
+        "ref": "They are going (on a return trip) to bury someone in Antalisa.",
+        "chrf": 10.16
+      },
+      {
+        "src": "Suagi laurta kaskas bara kanggeit.",
+        "hyp": "The doorbell rang at midnight.",
+        "ref": "The tuna play at the water surface; the seagulls come down to play (i.e. eat).",
+        "chrf": 8.92
+      },
+      {
+        "src": "Suo me kene arkon metko.",
+        "hyp": "How can I get to the metro.",
+        "ref": "At Suo is a kene tree.",
+        "chrf": 12.4
+      },
+      {
+        "src": "Nazuwa ladanun giarten met mecuan.",
+        "hyp": "The man is taller than the woman.",
+        "ref": "Nazuwa put her new shirt away.",
+        "chrf": 15.31
+      },
+      {
+        "src": "Ma urawat komahal, ka tok mat naunakte.",
+        "hyp": "Ma urawat komahal, ka tok mat naunakte.",
+        "ref": "He doesn't know the way, you show him.",
+        "chrf": 9.06
+      },
+      {
+        "src": "Et me mu yar nawanenda owatko daren.",
+        "hyp": "And I will give you a reward.",
+        "ref": "That canoe, they loaded stones in it and it sank over there.",
+        "chrf": 7.65
+      },
+      {
+        "src": "An istrat kahendengoa marmar ba temun.",
+        "hyp": "A strategy that endures is made of marble.",
+        "ref": "I'm walking on a long wide road.",
+        "chrf": 9.64
+      },
+      {
+        "src": "Kecaun dan lalangun komain.",
+        "hyp": "Toil and labor to gain.",
+        "ref": "Its kecap and its spicyness are just right.",
+        "chrf": 7.73
+      },
+      {
+        "src": "Patinun temun, don konkonin, bolodak.",
+        "hyp": "He is tall, thin, and strong.",
+        "ref": "He has a big wound, it doesn't matter, it's just a little.",
+        "chrf": 12.3
+      },
+      {
+        "src": "Tat me kubirar reidak.",
+        "hyp": "I am not from here.",
+        "ref": "At Tat there are many graves.",
+        "chrf": 12.39
+      },
+      {
+        "src": "Sontum kawirten hari minggu gerejao nasumbiyan.",
+        "hyp": "Sunday is the church's Sabbath.",
+        "ref": "Christians worship at the church on Sunday.",
+        "chrf": 36.09
+      },
+      {
+        "src": "An kadenan lalangda sirie Binkur esun anat cam.",
+        "hyp": "An kadenan lalangda sirie Binkur is the new cam.",
+        "ref": "I had a fever, I ordered Binkur's father to medicate me.",
+        "chrf": 17.49
+      },
+      {
+        "src": "Tanggor me mal reidak.",
+        "hyp": "The bell rings at dusk.",
+        "ref": "There are many rabbitfish at Tanggor.",
+        "chrf": 10.33
+      },
+      {
+        "src": "Madi emun kiemkangjie.",
+        "hyp": "I believe it is correct.",
+        "ref": "Madi's mother is sewing the rim of a basket.",
+        "chrf": 8.67
+      },
+      {
+        "src": "Kewe me tok nasalen.",
+        "hyp": "They are going to school.",
+        "ref": "That house is still open.",
+        "chrf": 12.78
+      },
+      {
+        "src": "Kaliset me Aina emun kewe anggasun me per nam.",
+        "hyp": "Kalamang believes that the sea is his ancestral home.",
+        "ref": "If it rains the water in front of Aina's mother's house puddles.",
+        "chrf": 14.71
+      },
+      {
+        "src": "Donenet kuskapkapten bo nasuena nerunggo.",
+        "hyp": "Donenet kuskapkap ten bo nasuena nerunggo.",
+        "ref": "A black ant goes inside the sugar.",
+        "chrf": 14.08
+      },
+      {
+        "src": "Faisal emun mua mingparin.",
+        "hyp": "Faisal believes it is possible.",
+        "ref": "Faisal's mother and family sell oil.",
+        "chrf": 18.94
+      },
+      {
+        "src": "Nina Ruslan taraun tok kuat.",
+        "hyp": "Nina Ruslan is strong enough.",
+        "ref": "Granny Ruslan's grandmother is still strong.",
+        "chrf": 27.8
+      },
+      {
+        "src": "Nina Im taraun me kumiriun arkon Nina Tanggiunggo.",
+        "hyp": "Nina is waiting for me at Nina Tanggiunggo's.",
+        "ref": "Im' s grandmother has one candlenut at Nina Tanggiun.",
+        "chrf": 33.98
+      },
+      {
+        "src": "Tami esun bo rompunggara momarat goyang.",
+        "hyp": "I am a dancer of the rhythm of the heart.",
+        "ref": "Tami's father goes to the floating fish lure to shake momar fish (to use as bait).",
+        "chrf": 11.76
+      },
+      {
+        "src": "Ma yumene asokmang, ma tiri.",
+        "hyp": "I am not sick, I am tired.",
+        "ref": "He is short of breath, he ran.",
+        "chrf": 9.37
+      },
+      {
+        "src": "Jawawas yumene kanggirar laus bolon.",
+        "hyp": "Jawabas you may need to call the police.",
+        "ref": "That Javanese woman has a slightly broad face.",
+        "chrf": 15.1
+      },
+      {
+        "src": "Keir Sakina mu imunat na.",
+        "hyp": "Sakina is my immune system.",
+        "ref": "A lorikeet ate Sakina's family's banana.",
+        "chrf": 17.49
+      },
+      {
+        "src": "Pi Gowienggo me fikfika ewaet me era luin.",
+        "hyp": "He is waiting for the bus to come.",
+        "ref": "When we're at Tana Besar and the palm cockatoo calls a canoe will come.",
+        "chrf": 11.43
+      },
+      {
+        "src": "Nabil emun inier melalu ba ma namanghadawi kolpis.",
+        "hyp": "He believes in one God who created the world.",
+        "ref": "Me and Nabil's mother sat chatting but she was facing another place.",
+        "chrf": 11.07
+      },
+      {
+        "src": "Rustam ma waruotkin ba ma narasa kawes.",
+        "hyp": "Rustam is not my brother.",
+        "ref": "Rustam wanted to bathe but he feld cold.",
+        "chrf": 18.74
+      },
+      {
+        "src": "Sontum Pakpakatenara mu deir.",
+        "hyp": "The sky is very clear today.",
+        "ref": "They brought people from Fakfak.",
+        "chrf": 11.85
+      },
+      {
+        "src": "Burhan sarimat sarara, karabar reidak.",
+        "hyp": "Burhan is a brave warrior, son of a king.",
+        "ref": "Burhan climbed the guava, there were many red ants.",
+        "chrf": 17.06
+      },
+      {
+        "src": "Desili koyet an koi panggutki tenaunat tawara.",
+        "hyp": "This year the new year comes later.",
+        "ref": "After planing, I use the panggut to chop the keel.",
+        "chrf": 11.76
+      },
+      {
+        "src": "In melalu garunga ba an se gelem.",
+        "hyp": "In the forest, the gelee is.",
+        "ref": "We sit talking but I'm already yawning.",
+        "chrf": 8.1
+      },
+      {
+        "src": "Sor wa me mais.",
+        "hyp": "The sun rises.",
+        "ref": "This fish is spoiled.",
+        "chrf": 10.05
+      },
+      {
+        "src": "Tumun se bo teimun miarip.",
+        "hyp": "You are sick because of me.",
+        "ref": "The kid has become this big.",
+        "chrf": 12.6
+      },
+      {
+        "src": "Ror yumene ur koura ma dekte ran mian.",
+        "hyp": "Kalamang means: Ror yumene ur koura ma dekte ran mian. English: Ror yumene ur koura ma dekte ran mian.",
+        "ref": "That wood, when the wind blows it moves back and forth.",
+        "chrf": 9.49
+      },
+      {
+        "src": "Rorcat sanggarei!",
+        "hyp": "The door is closed!",
+        "ref": "Search for your plank!",
+        "chrf": 8.2
+      },
+      {
+        "src": "Faisal emun me mindi don bolonet me ma he kademor.",
+        "hyp": "Faisal believes the mind is not a machine.",
+        "ref": "Faisal's mother is like that, if there is a small thing she is mad.",
+        "chrf": 18.59
+      },
+      {
+        "src": "Hawa kamfor giartenat koni jie.",
+        "hyp": "The wind comes from the southeast.",
+        "ref": "Hawa bought one new stove.",
+        "chrf": 12.92
+      },
+      {
+        "src": "Maimai olunat fakurat.",
+        "hyp": "The moon is full.",
+        "ref": "The bugs destroyed the leaves.",
+        "chrf": 7.9
+      },
+      {
+        "src": "Abdula emun mu borara, in epka, muat kobes.",
+        "hyp": "Abdula is the leader, in the council, of the elders.",
+        "ref": "Abdula's mother and family went in the front, we in the back, (but) we reached them.",
+        "chrf": 19.88
+      },
+      {
+        "src": "Kier tamanggara botkin?",
+        "hyp": "Who is the best doctor?",
+        "ref": "Where are you two going?",
+        "chrf": 11.92
+      },
+      {
+        "src": "Ladan yumet masarura ba donselet tan yuonyuon paruoret.",
+        "hyp": "Today's meeting will discuss your performance review.",
+        "ref": "Rip that shirt so that you can make a cloth for wiping hands.",
+        "chrf": 14.51
+      },
+      {
+        "src": "Warkin kararakte bayas se bo iriskapte kaheni bo.",
+        "hyp": "The warin character is the risk character of the language.",
+        "ref": "When the tide is low the white sand stretches far.",
+        "chrf": 18.56
+      },
+      {
+        "src": "Abdula esun mu etkies teba.",
+        "hyp": "Abdula is the leader of the team.",
+        "ref": "Abdula's father and family are carving a canoe.",
+        "chrf": 19.25
+      },
+      {
+        "src": "Keluer warkin kararakte ma gare.",
+        "hyp": "The workers are angry.",
+        "ref": "If it's low tide the crab crawls.",
+        "chrf": 7.9
+      },
+      {
+        "src": "Kaling yumene me kahamanun se kuskap.",
+        "hyp": "The way to go is through the forest.",
+        "ref": "That pan's bottom is black.",
+        "chrf": 10.42
+      },
+      {
+        "src": "Tomi kieunbon Yasin emunbon naulelukta mier naukoup.",
+        "hyp": "Tommy found Yasin under the tree near the village.",
+        "ref": "Tomi's wife and Yasin's mother meet each other and they hug each other.",
+        "chrf": 21.97
+      },
+      {
+        "src": "Bakri emun anat marok ma toni sor saerak ba mambon.",
+        "hyp": "Bakri believe that man is the master of the earth.",
+        "ref": "Bakri's mother fooled me, she said there is no fish but there is.",
+        "chrf": 18.33
+      },
+      {
+        "src": "Suci mok nerunggoa perna.",
+        "hyp": "Pure is your coming.",
+        "ref": "Suci drinks water from a mug.",
+        "chrf": 12.64
+      },
+      {
+        "src": "Pas yume he kaborko pak raman.",
+        "hyp": "He went to the market to buy some food.",
+        "ref": "That woman is six months pregnant.",
+        "chrf": 10.85
+      }
+    ]
+  },
+  "icl_gold": {
+    "corpus_chrf": 15.719,
+    "n": 50,
+    "samples": [
+      {
+        "src": "Wa me kariak kaia kon untuk emumur kalo tumun amkeiret mu wara nanet.",
+        "hyp": "He alone came to the village to meet the old man.",
+        "ref": "This is blood medicine for mothers, when they have given birth they drink this.",
+        "chrf": 12.19
+      },
+      {
+        "src": "Mu bo Tamisengga som dande yecie.",
+        "hyp": "I want to them to come from Tamisengga.",
+        "ref": "They are going (on a return trip) to bury someone in Antalisa.",
+        "chrf": 12.08
+      },
+      {
+        "src": "Suagi laurta kaskas bara kanggeit.",
+        "hyp": "Betel nut is used to chew.",
+        "ref": "The tuna play at the water surface; the seagulls come down to play (i.e. eat).",
+        "chrf": 8.78
+      },
+      {
+        "src": "Suo me kene arkon metko.",
+        "hyp": "Suo me kene arkon metko.",
+        "ref": "At Suo is a kene tree.",
+        "chrf": 22.68
+      },
+      {
+        "src": "Nazuwa ladanun giarten met mecuan.",
+        "hyp": "Nazuwa ladanun giarten met mecuan.",
+        "ref": "Nazuwa put her new shirt away.",
+        "chrf": 22.16
+      },
+      {
+        "src": "Ma urawat komahal, ka tok mat naunakte.",
+        "hyp": "He must not go to the doctor.",
+        "ref": "He doesn't know the way, you show him.",
+        "chrf": 14.39
+      },
+      {
+        "src": "Et me mu yar nawanenda owatko daren.",
+        "hyp": "Kalamang has you alone at the top of the tree.",
+        "ref": "That canoe, they loaded stones in it and it sank over there.",
+        "chrf": 16.24
+      },
+      {
+        "src": "An istrat kahendengoa marmar ba temun.",
+        "hyp": "An instructive statement by the elders.",
+        "ref": "I'm walking on a long wide road.",
+        "chrf": 9.78
+      },
+      {
+        "src": "Kecaun dan lalangun komain.",
+        "hyp": "Small and hot eat.",
+        "ref": "Its kecap and its spicyness are just right.",
+        "chrf": 7.42
+      },
+      {
+        "src": "Patinun temun, don konkonin, bolodak.",
+        "hyp": "Big fish, many people, little.",
+        "ref": "He has a big wound, it doesn't matter, it's just a little.",
+        "chrf": 16.87
+      },
+      {
+        "src": "Tat me kubirar reidak.",
+        "hyp": "Tata me grave.",
+        "ref": "At Tat there are many graves.",
+        "chrf": 20.26
+      },
+      {
+        "src": "Sontum kawirten hari minggu gerejao nasumbiyan.",
+        "hyp": "Sunday is the seventh day of the week and it is a holy day.",
+        "ref": "Christians worship at the church on Sunday.",
+        "chrf": 24.24
+      },
+      {
+        "src": "An kadenan lalangda sirie Binkur esun anat cam.",
+        "hyp": "A man in the forest sees a green bean.",
+        "ref": "I had a fever, I ordered Binkur's father to medicate me.",
+        "chrf": 10.97
+      },
+      {
+        "src": "Tanggor me mal reidak.",
+        "hyp": "Tanggor me mal reidak.",
+        "ref": "There are many rabbitfish at Tanggor.",
+        "chrf": 23.3
+      },
+      {
+        "src": "Madi emun kiemkangjie.",
+        "hyp": "He/she/it runs away.",
+        "ref": "Madi's mother is sewing the rim of a basket.",
+        "chrf": 7.22
+      },
+      {
+        "src": "Kewe me tok nasalen.",
+        "hyp": "Kewe me tok nasalen.",
+        "ref": "That house is still open.",
+        "chrf": 10.08
+      },
+      {
+        "src": "Kaliset me Aina emun kewe anggasun me per nam.",
+        "hyp": "He alone remembers the house of Anggasun.",
+        "ref": "If it rains the water in front of Aina's mother's house puddles.",
+        "chrf": 17.13
+      },
+      {
+        "src": "Donenet kuskapkapten bo nasuena nerunggo.",
+        "hyp": "Green coconut with forty-one pieces of sugar",
+        "ref": "A black ant goes inside the sugar.",
+        "chrf": 17.11
+      },
+      {
+        "src": "Faisal emun mua mingparin.",
+        "hyp": "Faisal is here today.",
+        "ref": "Faisal's mother and family sell oil.",
+        "chrf": 22.03
+      },
+      {
+        "src": "Nina Ruslan taraun tok kuat.",
+        "hyp": "Nina Ruslan taraun pas kuat.",
+        "ref": "Granny Ruslan's grandmother is still strong.",
+        "chrf": 15.32
+      },
+      {
+        "src": "Nina Im taraun me kumiriun arkon Nina Tanggiunggo.",
+        "hyp": "Nina is the daughter of Tanggiunggo.",
+        "ref": "Im' s grandmother has one candlenut at Nina Tanggiun.",
+        "chrf": 25.29
+      },
+      {
+        "src": "Tami esun bo rompunggara momarat goyang.",
+        "hyp": "They go to the beach to dance.",
+        "ref": "Tami's father goes to the floating fish lure to shake momar fish (to use as bait).",
+        "chrf": 9.83
+      },
+      {
+        "src": "Ma yumene asokmang, ma tiri.",
+        "hyp": "Ma yume asokmang, ma tiri.",
+        "ref": "He is short of breath, he ran.",
+        "chrf": 9.98
+      },
+      {
+        "src": "Jawawas yumene kanggirar laus bolon.",
+        "hyp": "Jawawas yume kanggir lau bolon",
+        "ref": "That Javanese woman has a slightly broad face.",
+        "chrf": 11.03
+      },
+      {
+        "src": "Keir Sakina mu imunat na.",
+        "hyp": "She came herself.",
+        "ref": "A lorikeet ate Sakina's family's banana.",
+        "chrf": 6.47
+      },
+      {
+        "src": "Pi Gowienggo me fikfika ewaet me era luin.",
+        "hyp": "You are you.",
+        "ref": "When we're at Tana Besar and the palm cockatoo calls a canoe will come.",
+        "chrf": 2.77
+      },
+      {
+        "src": "Nabil emun inier melalu ba ma namanghadawi kolpis.",
+        "hyp": "Nabil two in the morning go to the beach alone.",
+        "ref": "Me and Nabil's mother sat chatting but she was facing another place.",
+        "chrf": 20.97
+      },
+      {
+        "src": "Rustam ma waruotkin ba ma narasa kawes.",
+        "hyp": "Rustam wants to eat but feels cold.",
+        "ref": "Rustam wanted to bathe but he feld cold.",
+        "chrf": 43.09
+      },
+      {
+        "src": "Sontum Pakpakatenara mu deir.",
+        "hyp": "Sontum Pakpak areir mu deir.",
+        "ref": "They brought people from Fakfak.",
+        "chrf": 9.85
+      },
+      {
+        "src": "Burhan sarimat sarara, karabar reidak.",
+        "hyp": "He gave me some medicine to drink.",
+        "ref": "Burhan climbed the guava, there were many red ants.",
+        "chrf": 10.46
+      },
+      {
+        "src": "Desili koyet an koi panggutki tenaunat tawara.",
+        "hyp": "See here, do you, two do the complex predicates.",
+        "ref": "After planing, I use the panggut to chop the keel.",
+        "chrf": 13.16
+      },
+      {
+        "src": "In melalu garunga ba an se gelem.",
+        "hyp": "In melalu garunga ba an se gelem.",
+        "ref": "We sit talking but I'm already yawning.",
+        "chrf": 11.56
+      },
+      {
+        "src": "Sor wa me mais.",
+        "hyp": "Fish is proximal.",
+        "ref": "This fish is spoiled.",
+        "chrf": 21.47
+      },
+      {
+        "src": "Tumun se bo teimun miarip.",
+        "hyp": "The child goes to the sea.",
+        "ref": "The kid has become this big.",
+        "chrf": 17.2
+      },
+      {
+        "src": "Ror yumene ur koura ma dekte ran mian.",
+        "hyp": "A little crab is above the tree when it moves back and forth.",
+        "ref": "That wood, when the wind blows it moves back and forth.",
+        "chrf": 49.18
+      },
+      {
+        "src": "Rorcat sanggarei!",
+        "hyp": "Rarait sanggarei!",
+        "ref": "Search for your plank!",
+        "chrf": 8.26
+      },
+      {
+        "src": "Faisal emun me mindi don bolonet me ma he kademor.",
+        "hyp": "Faisal wants to know what the big fish says.",
+        "ref": "Faisal's mother is like that, if there is a small thing she is mad.",
+        "chrf": 17.85
+      },
+      {
+        "src": "Hawa kamfor giartenat koni jie.",
+        "hyp": "Wind from the kamfor stove comes inside.",
+        "ref": "Hawa bought one new stove.",
+        "chrf": 18.42
+      },
+      {
+        "src": "Maimai olunat fakurat.",
+        "hyp": "Maimai olunat fakurat.",
+        "ref": "The bugs destroyed the leaves.",
+        "chrf": 5.38
+      },
+      {
+        "src": "Abdula emun mu borara, in epka, muat kobes.",
+        "hyp": "Abdula is here, you comitative go there.",
+        "ref": "Abdula's mother and family went in the front, we in the back, (but) we reached them.",
+        "chrf": 16.95
+      },
+      {
+        "src": "Kier tamanggara botkin?",
+        "hyp": "They are still diving for shells there.",
+        "ref": "Where are you two going?",
+        "chrf": 19.85
+      },
+      {
+        "src": "Ladan yumet masarura ba donselet tan yuonyuon paruoret.",
+        "hyp": "Green beans are carried on the back of the child.",
+        "ref": "Rip that shirt so that you can make a cloth for wiping hands.",
+        "chrf": 12.06
+      },
+      {
+        "src": "Warkin kararakte bayas se bo iriskapte kaheni bo.",
+        "hyp": "Give me more context or a specific sentence to translate, as the provided text is not a complete Kalamang sentence.",
+        "ref": "When the tide is low the white sand stretches far.",
+        "chrf": 17.13
+      },
+      {
+        "src": "Abdula esun mu etkies teba.",
+        "hyp": "Abdula esun mu teba etkies.",
+        "ref": "Abdula's father and family are carving a canoe.",
+        "chrf": 14.59
+      },
+      {
+        "src": "Keluer warkin kararakte ma gare.",
+        "hyp": "Come out of low tide",
+        "ref": "If it's low tide the crab crawls.",
+        "chrf": 21.73
+      },
+      {
+        "src": "Kaling yumene me kahamanun se kuskap.",
+        "hyp": "Yume me kahamanun se kuskap.",
+        "ref": "That pan's bottom is black.",
+        "chrf": 9.4
+      },
+      {
+        "src": "Tomi kieunbon Yasin emunbon naulelukta mier naukoup.",
+        "hyp": "He came to the beach to meet them.",
+        "ref": "Tomi's wife and Yasin's mother meet each other and they hug each other.",
+        "chrf": 15.11
+      },
+      {
+        "src": "Bakri emun anat marok ma toni sor saerak ba mambon.",
+        "hyp": "Bakri emun an at marok ma toni sor saerak ba mambon.",
+        "ref": "Bakri's mother fooled me, she said there is no fish but there is.",
+        "chrf": 12.95
+      },
+      {
+        "src": "Suci mok nerunggoa perna.",
+        "hyp": "Suci mop nerunggoa perna.",
+        "ref": "Suci drinks water from a mug.",
+        "chrf": 15.9
+      },
+      {
+        "src": "Pas yume he kaborko pak raman.",
+        "hyp": "He is alone with the little child.",
+        "ref": "That woman is six months pregnant.",
+        "chrf": 9.9
+      }
+    ]
+  },
+  "ledger": {
+    "run_name": "phase0_anchors",
+    "axis_emitted_training_tokens": 0,
+    "axis_total_generator_completion_tokens": 1080,
+    "axis_total_generator_tokens": 1518096,
+    "emitted_examples": 0,
+    "total_calls": 100,
+    "by_purpose": {
+      "anchor_closedbook": {
+        "calls": 50,
+        "prompt_tokens": 3633,
+        "completion_tokens": 533,
+        "wall_s": 18.662344694137573
+      },
+      "anchor_iclgold": {
+        "calls": 50,
+        "prompt_tokens": 1513383,
+        "completion_tokens": 547,
+        "wall_s": 129.40061712265015
+      }
+    }
+  }
+}

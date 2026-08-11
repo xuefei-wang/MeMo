@@ -1,0 +1,645 @@
+{
+  "result": {
+    "direction": "ek",
+    "model": "gen",
+    "book_size": "medium",
+    "closed_book_chrf": 13.661,
+    "icl_gold_chrf": 7.945,
+    "headroom_band": -5.716,
+    "verdict": "NARROW -- consider swapping base"
+  },
+  "closed_book": {
+    "corpus_chrf": 13.661,
+    "n": 50,
+    "samples": [
+      {
+        "src": "Who asked you?",
+        "hyp": "Magana ka sa ano?",
+        "ref": "Namana kat gerket?",
+        "chrf": 20.87
+      },
+      {
+        "src": "The rope is wrapped around it.",
+        "hyp": "Iga-nga-nga nga kawo ayaw nga nag-awon sa iya",
+        "ref": "Karek mat kokarap.",
+        "chrf": 5.76
+      },
+      {
+        "src": "Before, they said Japan and The Netherlands were at war.",
+        "hyp": "Naawataw ang Japan at Holland sa kaginhayag",
+        "ref": "Wiseme mu toni Japangbon Beladarbon nausair.",
+        "chrf": 14.99
+      },
+      {
+        "src": "Davit's mother is filtering rice.",
+        "hyp": "Davit'sa moom saa kawin rice.",
+        "ref": "Davit emun pasa narawi.",
+        "chrf": 25.67
+      },
+      {
+        "src": "They are Yarkurans, not Yorres.",
+        "hyp": "Manggatay Yarkurans, naadu Yorres.",
+        "ref": "Mu me fam Yarkuran, Yorre ge.",
+        "chrf": 37.95
+      },
+      {
+        "src": "He has a place on the stones but it is a good place.",
+        "hyp": "Ia ay ipapahimingsa sa mga bato ngunit ito ay isang mahigpit na ipapahimingsa.",
+        "ref": "Goun yarnener ba goun rasa.",
+        "chrf": 12.29
+      },
+      {
+        "src": "The rain falls, our barrel is full.",
+        "hyp": "Iraan kaadu, aadu ninu kiri aadu.",
+        "ref": "Kalis bara tong inggon se bo mikon.",
+        "chrf": 8.14
+      },
+      {
+        "src": "I ordered him to get that, he got something else.",
+        "hyp": "Ama kaonatay niya akon nga nga, kaonatay niya nga akon sa nga nga.",
+        "ref": "An mat sirie ma bo met rep, ma koi kabasi rep.",
+        "chrf": 11.04
+      },
+      {
+        "src": "That person says that kid is stupid.",
+        "hyp": "Ira sahih ang ari-ari sa kid ay mapili.",
+        "ref": "Som yumene toni tumun yumene boda.",
+        "chrf": 4.52
+      },
+      {
+        "src": "Manado went fishing and came back at sunset.",
+        "hyp": "Manado nagpunta sa pagsilip at nahimutang sa gabi",
+        "ref": "Manado bo warta magaripta eba ma luk.",
+        "chrf": 22.28
+      },
+      {
+        "src": "She came from outside.",
+        "hyp": "Ina nakaumot mula kula.",
+        "ref": "Ma sontum kolgara luk.",
+        "chrf": 13.07
+      },
+      {
+        "src": "Salima's mother bought Salima a brown shirt.",
+        "hyp": "Salima siya ngayon ang ama niya nagbibigay ng bana shirt kay Salima.",
+        "ref": "Salima emun Salima ladanunat koni jie ba kowewepkon.",
+        "chrf": 23.46
+      },
+      {
+        "src": "Rajia's mother has coconuts.",
+        "hyp": "Rajia na maaayon ko ay may kadayot.",
+        "ref": "Rajia emun me warun mambon.",
+        "chrf": 18.63
+      },
+      {
+        "src": "Rukmana's family are mixing charcoal.",
+        "hyp": "Rukmana'sa familya inga ingi ingi inga inga ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ngi ng",
+        "ref": "Rukmana mu kus koyal teba.",
+        "chrf": 6.13
+      },
+      {
+        "src": "The sarawuar-banan isn't ripe yet.",
+        "hyp": "Na sarawuar-banan nai ake na kai.",
+        "ref": "Im sarawuar me tok sawaunin.",
+        "chrf": 29.59
+      },
+      {
+        "src": "I don't have problems with them.",
+        "hyp": "Ama ko nangka kag pagsisikap sa kanila.",
+        "ref": "An kiat misternin.",
+        "chrf": 12.12
+      },
+      {
+        "src": "Rehan punches Kalamang.",
+        "hyp": "Rehan manggol Kalamang.",
+        "ref": "Rehan Kalamangat natewa.",
+        "chrf": 42.49
+      },
+      {
+        "src": "This is aunt Ludin's mother's grave.",
+        "hyp": "Ia ang mga tumba ng ama ng ama ni Ludin.",
+        "ref": "Wa me mama tua Ludin emun kubirun.",
+        "chrf": 23.41
+      },
+      {
+        "src": "Arifin saw an octopus crawling.",
+        "hyp": "Arifin saw octopus crawling.",
+        "ref": "Arifin kona kurera etkon garegare.",
+        "chrf": 19.78
+      },
+      {
+        "src": "There are two fibre boats there, which one is Dian's grandfather's? The red one.",
+        "hyp": "Iraayo duwage fibre nga bote sahi, dili kaayo nga bote sahi sa Dian nga abo sahi? Duwed nga bote.",
+        "ref": "Fiber eira metko, kon tama Dian taraunkin? Kon kerkapten.",
+        "chrf": 16.22
+      },
+      {
+        "src": "Gani and family get bamboo, they want to make a bamboo wall.",
+        "hyp": "Gani at famili gawin bamboo, wani makatubag bamboo wall.",
+        "ref": "Gani mu gous repte kayakat paruotkin deba.",
+        "chrf": 16.83
+      },
+      {
+        "src": "My house is small too.",
+        "hyp": "Ibod ko ay malayo lamang.",
+        "ref": "Kewean anggon cicaun weinun.",
+        "chrf": 7.01
+      },
+      {
+        "src": "He has a kidney-disease.",
+        "hyp": "Ia nagsusulat ng kakaalamatan sa kanyang isda-disease.",
+        "ref": "Ma kaleuna ning.",
+        "chrf": 16.36
+      },
+      {
+        "src": "A cockroach fell in the rice bucket.",
+        "hyp": "Iriwagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawagawag",
+        "ref": "Dudin turi pasaembir nerunggo.",
+        "chrf": 0.95
+      },
+      {
+        "src": "Abdula's father caught a red grouper.",
+        "hyp": "Abdula siya ang tao na nagdulot ng red grouper.",
+        "ref": "Abdula esun barauap kerkapkap wara ramie.",
+        "chrf": 18.25
+      },
+      {
+        "src": "Bilal's father's family are going down to Antalisa sailing close to the coast.",
+        "hyp": "Bilal'sa pagsila't pamilya ay nagdulot ng pagtayo sa Antalisa may pagsilip sa lipon.",
+        "ref": "Bilal esun mu Tamisengga bara tiri nasangginggir.",
+        "chrf": 17.28
+      },
+      {
+        "src": "Agus's mother sells clothes: shirts, sarongs, pants.",
+        "hyp": "Agus siyawaden a matsahin a matsahin, a matsahin a matsarong, a matsahin a matsa.",
+        "ref": "Agus emun ma dodon parin: ladan, kadok, sungsung.",
+        "chrf": 14.61
+      },
+      {
+        "src": "Alun and his friends are catching prawns.",
+        "hyp": "Alun at ikawakawak sa mga kaugalingon niya",
+        "ref": "Alun mu kielmarok teba.",
+        "chrf": 14.71
+      },
+      {
+        "src": "Before, there was a Mamika/Kokonau person here but he left",
+        "hyp": "Na mamika/kokonau wa ni ari ake iki ake moa",
+        "ref": "Wiseme Mamikaca kon watko ma ma he bot.",
+        "chrf": 22.04
+      },
+      {
+        "src": "She slept until the morning, then she walked.",
+        "hyp": "Inaon ninawen sa gabi, dili pa siya humod sa gabi, kini humod sa gabi.",
+        "ref": "Ma minde bo godung ma koi marmar.",
+        "chrf": 12.15
+      },
+      {
+        "src": "It was hot, Sakina sat fanning her body.",
+        "hyp": "Hot si Sakina na nga kinatibuk-an sa fan sa katawan.",
+        "ref": "Go lalangda Sakina melalu kadenunat kawiawi.",
+        "chrf": 21.88
+      },
+      {
+        "src": "Our father sewed clothing so (we had) many clothes.",
+        "hyp": "Iwawo a matsinaw a matsinaw n'i a matsinaw",
+        "ref": "Esa inggon donpat jadi dodon reidak.",
+        "chrf": 8.42
+      },
+      {
+        "src": "The beach at Kambur is long.",
+        "hyp": "Ang bahay sa Kambur ay malungkot.",
+        "ref": "Os Kamburkadok me kahen.",
+        "chrf": 24.45
+      },
+      {
+        "src": "Riski's mother and family are marrying on the mainland.",
+        "hyp": "Raksi na muna at kumatawan ay nagpunta sa mainland sa pagkakasunod-sunod.",
+        "ref": "Riski emun mu distrio nauhalar.",
+        "chrf": 12.76
+      },
+      {
+        "src": "Unyil follwed her husband to Dobu but she and her child returned.",
+        "hyp": "Unyil gawenakununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununununun",
+        "ref": "Unyil namunat pareri bo Dobuo ba mier tumununbon se yecie.",
+        "chrf": 4.28
+      },
+      {
+        "src": "An imperion pidgeon died.",
+        "hyp": "Irima pidgeon dawat.",
+        "ref": "Mursambuk etkon lalat.",
+        "chrf": 12.14
+      },
+      {
+        "src": "Unyil's father, if he sleeps, he snores.",
+        "hyp": "Unyil na ipinangalan sa aking tao, kung may kaugalingon siya, may naruto siya.",
+        "ref": "Unyil esun me minet me ma he minggaruk.",
+        "chrf": 18.85
+      },
+      {
+        "src": "In the evening the owl hoots.",
+        "hyp": "Sa gabi ang mga kakaibang-awit ng mga kakaibang-awit nagsilbi.",
+        "ref": "Gosaunet me kumbai ewawa.",
+        "chrf": 10.63
+      },
+      {
+        "src": "That child is big and white.",
+        "hyp": "Iga kid ni big ug white.",
+        "ref": "Emnemtumun kadenun temun eba ma iren.",
+        "chrf": 6.26
+      },
+      {
+        "src": "I'm just sitting.",
+        "hyp": "Igo nga nagsitengsoran.",
+        "ref": "An nakmelelu reba.",
+        "chrf": 7.9
+      },
+      {
+        "src": "That man from Buton is light-skinned.",
+        "hyp": "Na man sa Buton ay ligtukang-sigla.",
+        "ref": "Utunca yume guarten.",
+        "chrf": 11.52
+      },
+      {
+        "src": "Camat and family came, we in the bay didn't know.",
+        "hyp": "Kamat ug bayan kinatid, nga bayan kinatid nga matagubang kinatid nga hindi kinatid.",
+        "ref": "Camat mu lukta, in arep neko komahal.",
+        "chrf": 14.3
+      },
+      {
+        "src": "Oh, that person down there is pulling out [our plants].",
+        "hyp": "Oh, wala namin sa bawat bato yun nga nagpunta [sa mga pinya namin].",
+        "ref": "O som yaweba daruar.",
+        "chrf": 10.93
+      },
+      {
+        "src": "The medicine man cuts a male papaya tree.",
+        "hyp": "Iwagawag ang mga patihihan ang isang lalaki na papaya tree",
+        "ref": "Kamanget polkayak canamat dorma.",
+        "chrf": 15.88
+      },
+      {
+        "src": "How are you? Good.",
+        "hyp": "Kamangay? Ngagaw.",
+        "ref": "Nauwar tamandi? Bes.",
+        "chrf": 15.76
+      },
+      {
+        "src": "Kalamang's father's family have one hundred coconut leaf stems.",
+        "hyp": "Ang pamilya ng aking lolo ay may isang daan ng kahoy na lupa.",
+        "ref": "Kalamang esun mu walorkawat reitkon.",
+        "chrf": 14.25
+      },
+      {
+        "src": "On the small island a pigeon laid eggs.",
+        "hyp": "Sa kagubatan malayo, isang pigoon naglalayong lumayo.",
+        "ref": "Lempuang tumun me murkumkum metko amkeit.",
+        "chrf": 8.8
+      },
+      {
+        "src": "Manadu has a toothache, his cheek is swollen.",
+        "hyp": "Manadu ay magagawa ng kahoy, ang kahoy ko ay maaaring maging mabilis.",
+        "ref": "Manadu gierun ningda koliep rua.",
+        "chrf": 21.76
+      },
+      {
+        "src": "Tat has bad soil.",
+        "hyp": "Tat ay nagdala ng bad soil.",
+        "ref": "Tat me naun ten.",
+        "chrf": 12.81
+      },
+      {
+        "src": "Tuti's second husband is Dela's father.",
+        "hyp": "Dela si kani nga ikawon nga tuti at ikawon nga dela",
+        "ref": "Tuti emun namun cauna Dela esun.",
+        "chrf": 15.4
+      }
+    ]
+  },
+  "icl_gold": {
+    "corpus_chrf": 7.945,
+    "n": 50,
+    "samples": [
+      {
+        "src": "Who asked you?",
+        "hyp": "gerket",
+        "ref": "Namana kat gerket?",
+        "chrf": 29.09
+      },
+      {
+        "src": "The rope is wrapped around it.",
+        "hyp": "pur puran",
+        "ref": "Karek mat kokarap.",
+        "chrf": 5.87
+      },
+      {
+        "src": "Before, they said Japan and The Netherlands were at war.",
+        "hyp": "ma he me go sir",
+        "ref": "Wiseme mu toni Japangbon Beladarbon nausair.",
+        "chrf": 7.06
+      },
+      {
+        "src": "Davit's mother is filtering rice.",
+        "hyp": "mormor lapas na kai",
+        "ref": "Davit emun pasa narawi.",
+        "chrf": 12.4
+      },
+      {
+        "src": "They are Yarkurans, not Yorres.",
+        "hyp": "yarkuranci yore",
+        "ref": "Mu me fam Yarkuran, Yorre ge.",
+        "chrf": 26.35
+      },
+      {
+        "src": "He has a place on the stones but it is a good place.",
+        "hyp": "kalan kus kaling",
+        "ref": "Goun yarnener ba goun rasa.",
+        "chrf": 6.29
+      },
+      {
+        "src": "The rain falls, our barrel is full.",
+        "hyp": "wat watko temun",
+        "ref": "Kalis bara tong inggon se bo mikon.",
+        "chrf": 6.51
+      },
+      {
+        "src": "I ordered him to get that, he got something else.",
+        "hyp": "ma=at mu muap=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at",
+        "ref": "An mat sirie ma bo met rep, ma koi kabasi rep.",
+        "chrf": 2.05
+      },
+      {
+        "src": "That person says that kid is stupid.",
+        "hyp": "ki pi=at konawaruo",
+        "ref": "Som yumene toni tumun yumene boda.",
+        "chrf": 5.08
+      },
+      {
+        "src": "Manado went fishing and came back at sunset.",
+        "hyp": "Manado go fishing = Manadi muap; come back = koyet; sunset = go nawariri",
+        "ref": "Manado bo warta magaripta eba ma luk.",
+        "chrf": 23.39
+      },
+      {
+        "src": "She came from outside.",
+        "hyp": "kolga kol",
+        "ref": "Ma sontum kolgara luk.",
+        "chrf": 19.28
+      },
+      {
+        "src": "Salima's mother bought Salima a brown shirt.",
+        "hyp": "ema cicaun=at kai kawas=at kai modar=at kai taul=at mu",
+        "ref": "Salima emun Salima ladanunat koni jie ba kowewepkon.",
+        "chrf": 13.36
+      },
+      {
+        "src": "Rajia's mother has coconuts.",
+        "hyp": "wat sasul",
+        "ref": "Rajia emun me warun mambon.",
+        "chrf": 4.21
+      },
+      {
+        "src": "Rukmana's family are mixing charcoal.",
+        "hyp": "kuk kus",
+        "ref": "Rukmana mu kus koyal teba.",
+        "chrf": 9.13
+      },
+      {
+        "src": "The sarawuar-banan isn't ripe yet.",
+        "hyp": "sarawuar-banan teune",
+        "ref": "Im sarawuar me tok sawaunin.",
+        "chrf": 32.15
+      },
+      {
+        "src": "I don't have problems with them.",
+        "hyp": "a don ko=ko",
+        "ref": "An kiat misternin.",
+        "chrf": 4.65
+      },
+      {
+        "src": "Rehan punches Kalamang.",
+        "hyp": "Rehan koyet Kalamang",
+        "ref": "Rehan Kalamangat natewa.",
+        "chrf": 43.03
+      },
+      {
+        "src": "This is aunt Ludin's mother's grave.",
+        "hyp": "emnem kahutak",
+        "ref": "Wa me mama tua Ludin emun kubirun.",
+        "chrf": 9.55
+      },
+      {
+        "src": "Arifin saw an octopus crawling.",
+        "hyp": "Kanggei ar",
+        "ref": "Arifin kona kurera etkon garegare.",
+        "chrf": 6.51
+      },
+      {
+        "src": "There are two fibre boats there, which one is Dian's grandfather's? The red one.",
+        "hyp": "et at et ko dian=ba tata ko ko ko ko",
+        "ref": "Fiber eira metko, kon tama Dian taraunkin? Kon kerkapten.",
+        "chrf": 13.24
+      },
+      {
+        "src": "Gani and family get bamboo, they want to make a bamboo wall.",
+        "hyp": "gani=at muap=at kambang=at kambang",
+        "ref": "Gani mu gous repte kayakat paruotkin deba.",
+        "chrf": 13.47
+      },
+      {
+        "src": "My house is small too.",
+        "hyp": "bal cicaun=at pue=at bolon",
+        "ref": "Kewean anggon cicaun weinun.",
+        "chrf": 20.1
+      },
+      {
+        "src": "He has a kidney-disease.",
+        "hyp": "kaden kies",
+        "ref": "Ma kaleuna ning.",
+        "chrf": 7.8
+      },
+      {
+        "src": "A cockroach fell in the rice bucket.",
+        "hyp": "kareng kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar kawar k",
+        "ref": "Dudin turi pasaembir nerunggo.",
+        "chrf": 1.4
+      },
+      {
+        "src": "Abdula's father caught a red grouper.",
+        "hyp": "ma cicaun=at et=kara=at kerkap=konggap",
+        "ref": "Abdula esun barauap kerkapkap wara ramie.",
+        "chrf": 20.62
+      },
+      {
+        "src": "Bilal's father's family are going down to Antalisa sailing close to the coast.",
+        "hyp": "ka bon bonasau et ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bonan-an ko bon ko bon",
+        "ref": "Bilal esun mu Tamisengga bara tiri nasangginggir.",
+        "chrf": 2.58
+      },
+      {
+        "src": "Agus's mother sells clothes: shirts, sarongs, pants.",
+        "hyp": "ma ror cicaun=at pue",
+        "ref": "Agus emun ma dodon parin: ladan, kadok, sungsung.",
+        "chrf": 6.79
+      },
+      {
+        "src": "Alun and his friends are catching prawns.",
+        "hyp": "kawasat ko=ten kawas",
+        "ref": "Alun mu kielmarok teba.",
+        "chrf": 7.7
+      },
+      {
+        "src": "Before, there was a Mamika/Kokonau person here but he left",
+        "hyp": "ma cicaun=at mam=at kokonau=at",
+        "ref": "Wiseme Mamikaca kon watko ma ma he bot.",
+        "chrf": 18.13
+      },
+      {
+        "src": "She slept until the morning, then she walked.",
+        "hyp": "na go yuol na go sir",
+        "ref": "Ma minde bo godung ma koi marmar.",
+        "chrf": 8.84
+      },
+      {
+        "src": "It was hot, Sakina sat fanning her body.",
+        "hyp": "lu karen kaden",
+        "ref": "Go lalangda Sakina melalu kadenunat kawiawi.",
+        "chrf": 13.88
+      },
+      {
+        "src": "Our father sewed clothing so (we had) many clothes.",
+        "hyp": "kambang kamaruok",
+        "ref": "Esa inggon donpat jadi dodon reidak.",
+        "chrf": 6.02
+      },
+      {
+        "src": "The beach at Kambur is long.",
+        "hyp": "sara go tagur",
+        "ref": "Os Kamburkadok me kahen.",
+        "chrf": 7.07
+      },
+      {
+        "src": "Riski's mother and family are marrying on the mainland.",
+        "hyp": "ki temun=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=at=",
+        "ref": "Riski emun mu distrio nauhalar.",
+        "chrf": 2.89
+      },
+      {
+        "src": "Unyil follwed her husband to Dobu but she and her child returned.",
+        "hyp": "ma yuon ba yuor=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko=ko",
+        "ref": "Unyil namunat pareri bo Dobuo ba mier tumununbon se yecie.",
+        "chrf": 2.59
+      },
+      {
+        "src": "An imperion pidgeon died.",
+        "hyp": "kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun kawe padenun k",
+        "ref": "Mursambuk etkon lalat.",
+        "chrf": 1.17
+      },
+      {
+        "src": "Unyil's father, if he sleeps, he snores.",
+        "hyp": "kaden kies koyen",
+        "ref": "Unyil esun me minet me ma he minggaruk.",
+        "chrf": 6.48
+      },
+      {
+        "src": "In the evening the owl hoots.",
+        "hyp": "karek",
+        "ref": "Gosaunet me kumbai ewawa.",
+        "chrf": 4.36
+      },
+      {
+        "src": "That child is big and white.",
+        "hyp": "temun aremun",
+        "ref": "Emnemtumun kadenun temun eba ma iren.",
+        "chrf": 16.21
+      },
+      {
+        "src": "I'm just sitting.",
+        "hyp": "ma neba=at",
+        "ref": "An nakmelelu reba.",
+        "chrf": 10.62
+      },
+      {
+        "src": "That man from Buton is light-skinned.",
+        "hyp": "ka a bolon",
+        "ref": "Utunca yume guarten.",
+        "chrf": 3.12
+      },
+      {
+        "src": "Camat and family came, we in the bay didn't know.",
+        "hyp": "Kamat and anahutak came, we in the bay didn't know.",
+        "ref": "Camat mu lukta, in arep neko komahal.",
+        "chrf": 16.29
+      },
+      {
+        "src": "Oh, that person down there is pulling out [our plants].",
+        "hyp": "yawe ko watko yuwa",
+        "ref": "O som yaweba daruar.",
+        "chrf": 14.75
+      },
+      {
+        "src": "The medicine man cuts a male papaya tree.",
+        "hyp": "kaman kawai=at=bon=at kawai",
+        "ref": "Kamanget polkayak canamat dorma.",
+        "chrf": 14.45
+      },
+      {
+        "src": "How are you? Good.",
+        "hyp": "yane ba",
+        "ref": "Nauwar tamandi? Bes.",
+        "chrf": 5.42
+      },
+      {
+        "src": "Kalamang's father's family have one hundred coconut leaf stems.",
+        "hyp": "kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan kalan",
+        "ref": "Kalamang esun mu walorkawat reitkon.",
+        "chrf": 2.07
+      },
+      {
+        "src": "On the small island a pigeon laid eggs.",
+        "hyp": "temun karan karanang karan",
+        "ref": "Lempuang tumun me murkumkum metko amkeit.",
+        "chrf": 10.65
+      },
+      {
+        "src": "Manadu has a toothache, his cheek is swollen.",
+        "hyp": "ema caun kangkanggarek kanggir ko ko",
+        "ref": "Manadu gierun ningda koliep rua.",
+        "chrf": 13.51
+      },
+      {
+        "src": "Tat has bad soil.",
+        "hyp": "tun sunsun na",
+        "ref": "Tat me naun ten.",
+        "chrf": 10.81
+      },
+      {
+        "src": "Tuti's second husband is Dela's father.",
+        "hyp": "kai kawas=ko=saet=ko=del=ko=ma=dir=ko=an",
+        "ref": "Tuti emun namun cauna Dela esun.",
+        "chrf": 7.98
+      }
+    ]
+  },
+  "ledger": {
+    "run_name": "phase0_anchors",
+    "axis_emitted_training_tokens": 0,
+    "axis_total_generator_completion_tokens": 3913,
+    "axis_total_generator_tokens": 1520609,
+    "emitted_examples": 0,
+    "total_calls": 100,
+    "by_purpose": {
+      "anchor_closedbook": {
+        "calls": 50,
+        "prompt_tokens": 3473,
+        "completion_tokens": 1702,
+        "wall_s": 31.761550188064575
+      },
+      "anchor_iclgold": {
+        "calls": 50,
+        "prompt_tokens": 1513223,
+        "completion_tokens": 2211,
+        "wall_s": 150.60793375968933
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.venv/
+data/mtob_resources/
+data/mtob_splits/
+data/rulearena_raw/
+runs/*.log
+runs/**/samples*.json
+__pycache__/
+*.pyc
