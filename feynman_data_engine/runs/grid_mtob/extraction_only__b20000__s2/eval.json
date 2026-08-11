@@ -1,0 +1,312 @@
+{
+  "summary": {
+    "base": "Qwen/Qwen3-8B",
+    "adapter": "/data/xwang3/Projects/MeMo/feynman_data_engine/runs/grid_mtob/extraction_only__b20000__s2/adapter",
+    "direction": "ke",
+    "context": "none",
+    "n": 50,
+    "corpus_chrf": 22.216
+  },
+  "samples": [
+    {
+      "src": "Wa me kariak kaia kon untuk emumur kalo tumun amkeiret mu wara nanet.",
+      "hyp": "I have a fever, my body is hot, I feel dizzy, I vomit, I have a headache.",
+      "ref": "This is blood medicine for mothers, when they have given birth they drink this.",
+      "chrf": 13.83
+    },
+    {
+      "src": "Mu bo Tamisengga som dande yecie.",
+      "hyp": "They are going to Tamiseng to cut wood.",
+      "ref": "They are going (on a return trip) to bury someone in Antalisa.",
+      "chrf": 27.16
+    },
+    {
+      "src": "Suagi laurta kaskas bara kanggeit.",
+      "hyp": "The sea is calm, the wind is still.",
+      "ref": "The tuna play at the water surface; the seagulls come down to play (i.e. eat).",
+      "chrf": 12.81
+    },
+    {
+      "src": "Suo me kene arkon metko.",
+      "hyp": "He is sick, he has a fever.",
+      "ref": "At Suo is a kene tree.",
+      "chrf": 11.35
+    },
+    {
+      "src": "Nazuwa ladanun giarten met mecuan.",
+      "hyp": "Nazuwa's mother is weaving a mat.",
+      "ref": "Nazuwa put her new shirt away.",
+      "chrf": 27.33
+    },
+    {
+      "src": "Ma urawat komahal, ka tok mat naunakte.",
+      "hyp": "I have a fever, I can't sleep.",
+      "ref": "He doesn't know the way, you show him.",
+      "chrf": 7.96
+    },
+    {
+      "src": "Et me mu yar nawanenda owatko daren.",
+      "hyp": "I go to the beach, there are many people.",
+      "ref": "That canoe, they loaded stones in it and it sank over there.",
+      "chrf": 17.02
+    },
+    {
+      "src": "An istrat kahendengoa marmar ba temun.",
+      "hyp": "I have a fever, my body is hot.",
+      "ref": "I'm walking on a long wide road.",
+      "chrf": 7.84
+    },
+    {
+      "src": "Kecaun dan lalangun komain.",
+      "hyp": "There are many weeds and grasses.",
+      "ref": "Its kecap and its spicyness are just right.",
+      "chrf": 13.73
+    },
+    {
+      "src": "Patinun temun, don konkonin, bolodak.",
+      "hyp": "The fish is small, it's a don, it's a bolodak.",
+      "ref": "He has a big wound, it doesn't matter, it's just a little.",
+      "chrf": 18.42
+    },
+    {
+      "src": "Tat me kubirar reidak.",
+      "hyp": "That child is playing with a stick.",
+      "ref": "At Tat there are many graves.",
+      "chrf": 10.06
+    },
+    {
+      "src": "Sontum kawirten hari minggu gerejao nasumbiyan.",
+      "hyp": "The children's parents go to church on Sunday.",
+      "ref": "Christians worship at the church on Sunday.",
+      "chrf": 45.16
+    },
+    {
+      "src": "An kadenan lalangda sirie Binkur esun anat cam.",
+      "hyp": "I went to the forest to cut wood, but there was no wood.",
+      "ref": "I had a fever, I ordered Binkur's father to medicate me.",
+      "chrf": 12.92
+    },
+    {
+      "src": "Tanggor me mal reidak.",
+      "hyp": "Tanggor's mother is cooking.",
+      "ref": "There are many rabbitfish at Tanggor.",
+      "chrf": 23.42
+    },
+    {
+      "src": "Madi emun kiemkangjie.",
+      "hyp": "Madi's mother is cooking.",
+      "ref": "Madi's mother is sewing the rim of a basket.",
+      "chrf": 41.85
+    },
+    {
+      "src": "Kewe me tok nasalen.",
+      "hyp": "The child's mother is cooking.",
+      "ref": "That house is still open.",
+      "chrf": 14.54
+    },
+    {
+      "src": "Kaliset me Aina emun kewe anggasun me per nam.",
+      "hyp": "The family of Kali is going to Aina's house to eat.",
+      "ref": "If it rains the water in front of Aina's mother's house puddles.",
+      "chrf": 24.0
+    },
+    {
+      "src": "Donenet kuskapkapten bo nasuena nerunggo.",
+      "hyp": "Doni's father and family are going to the sea.",
+      "ref": "A black ant goes inside the sugar.",
+      "chrf": 18.05
+    },
+    {
+      "src": "Faisal emun mua mingparin.",
+      "hyp": "Faisal's mother is cooking.",
+      "ref": "Faisal's mother and family sell oil.",
+      "chrf": 45.59
+    },
+    {
+      "src": "Nina Ruslan taraun tok kuat.",
+      "hyp": "Nina's father is strong.",
+      "ref": "Granny Ruslan's grandmother is still strong.",
+      "chrf": 31.83
+    },
+    {
+      "src": "Nina Im taraun me kumiriun arkon Nina Tanggiunggo.",
+      "hyp": "Nina's father and family are going to cut down a tree for Nina Tanggiunggo.",
+      "ref": "Im' s grandmother has one candlenut at Nina Tanggiun.",
+      "chrf": 35.91
+    },
+    {
+      "src": "Tami esun bo rompunggara momarat goyang.",
+      "hyp": "Tami's mother is grinding nutmeg, the mortar is shaking.",
+      "ref": "Tami's father goes to the floating fish lure to shake momar fish (to use as bait).",
+      "chrf": 21.43
+    },
+    {
+      "src": "Ma yumene asokmang, ma tiri.",
+      "hyp": "He is sick, he is vomiting.",
+      "ref": "He is short of breath, he ran.",
+      "chrf": 18.45
+    },
+    {
+      "src": "Jawawas yumene kanggirar laus bolon.",
+      "hyp": "The wind is blowing from the east.",
+      "ref": "That Javanese woman has a slightly broad face.",
+      "chrf": 13.65
+    },
+    {
+      "src": "Keir Sakina mu imunat na.",
+      "hyp": "Keir's mother is cooking.",
+      "ref": "A lorikeet ate Sakina's family's banana.",
+      "chrf": 10.39
+    },
+    {
+      "src": "Pi Gowienggo me fikfika ewaet me era luin.",
+      "hyp": "I want to go to Gowienggo, but I don't have a boat.",
+      "ref": "When we're at Tana Besar and the palm cockatoo calls a canoe will come.",
+      "chrf": 9.54
+    },
+    {
+      "src": "Nabil emun inier melalu ba ma namanghadawi kolpis.",
+      "hyp": "Nabil's mother is cooking fish, but she doesn't have a pot.",
+      "ref": "Me and Nabil's mother sat chatting but she was facing another place.",
+      "chrf": 34.75
+    },
+    {
+      "src": "Rustam ma waruotkin ba ma narasa kawes.",
+      "hyp": "Rustam's father and family are going to the forest to cut wood.",
+      "ref": "Rustam wanted to bathe but he feld cold.",
+      "chrf": 27.96
+    },
+    {
+      "src": "Sontum Pakpakatenara mu deir.",
+      "hyp": "The Pakpak people are planting corn.",
+      "ref": "They brought people from Fakfak.",
+      "chrf": 23.65
+    },
+    {
+      "src": "Burhan sarimat sarara, karabar reidak.",
+      "hyp": "Burhan's mother is cooking, she's stirring the soup.",
+      "ref": "Burhan climbed the guava, there were many red ants.",
+      "chrf": 20.05
+    },
+    {
+      "src": "Desili koyet an koi panggutki tenaunat tawara.",
+      "hyp": "Desi's mother is cooking, she's stirring the soup.",
+      "ref": "After planing, I use the panggut to chop the keel.",
+      "chrf": 15.9
+    },
+    {
+      "src": "In melalu garunga ba an se gelem.",
+      "hyp": "I have a fever, I feel dizzy.",
+      "ref": "We sit talking but I'm already yawning.",
+      "chrf": 6.47
+    },
+    {
+      "src": "Sor wa me mais.",
+      "hyp": "That's a good house.",
+      "ref": "This fish is spoiled.",
+      "chrf": 9.42
+    },
+    {
+      "src": "Tumun se bo teimun miarip.",
+      "hyp": "The child's mother is cooking.",
+      "ref": "The kid has become this big.",
+      "chrf": 20.83
+    },
+    {
+      "src": "Ror yumene ur koura ma dekte ran mian.",
+      "hyp": "The sea is calm, the wind is not blowing.",
+      "ref": "That wood, when the wind blows it moves back and forth.",
+      "chrf": 22.92
+    },
+    {
+      "src": "Rorcat sanggarei!",
+      "hyp": "The cat is there!",
+      "ref": "Search for your plank!",
+      "chrf": 5.56
+    },
+    {
+      "src": "Faisal emun me mindi don bolonet me ma he kademor.",
+      "hyp": "Faisal's mother is cooking, she's making a stew, she's putting the leaves in.",
+      "ref": "Faisal's mother is like that, if there is a small thing she is mad.",
+      "chrf": 37.61
+    },
+    {
+      "src": "Hawa kamfor giartenat koni jie.",
+      "hyp": "Hawa's father is making a canoe.",
+      "ref": "Hawa bought one new stove.",
+      "chrf": 15.6
+    },
+    {
+      "src": "Maimai olunat fakurat.",
+      "hyp": "Maimai's mother is cooking.",
+      "ref": "The bugs destroyed the leaves.",
+      "chrf": 8.57
+    },
+    {
+      "src": "Abdula emun mu borara, in epka, muat kobes.",
+      "hyp": "Abdula's mother is cooking, she's stirring, she's putting in coconut.",
+      "ref": "Abdula's mother and family went in the front, we in the back, (but) we reached them.",
+      "chrf": 26.18
+    },
+    {
+      "src": "Kier tamanggara botkin?",
+      "hyp": "Is there a lot of fish?",
+      "ref": "Where are you two going?",
+      "chrf": 18.01
+    },
+    {
+      "src": "Ladan yumet masarura ba donselet tan yuonyuon paruoret.",
+      "hyp": "The child's mother is cooking, she's stirring the soup.",
+      "ref": "Rip that shirt so that you can make a cloth for wiping hands.",
+      "chrf": 15.88
+    },
+    {
+      "src": "Warkin kararakte bayas se bo iriskapte kaheni bo.",
+      "hyp": "The wind is blowing, the leaves are falling, the sky is dark.",
+      "ref": "When the tide is low the white sand stretches far.",
+      "chrf": 21.29
+    },
+    {
+      "src": "Abdula esun mu etkies teba.",
+      "hyp": "Abdula's father is sick.",
+      "ref": "Abdula's father and family are carving a canoe.",
+      "chrf": 35.8
+    },
+    {
+      "src": "Keluer warkin kararakte ma gare.",
+      "hyp": "The wind is blowing, the leaves are falling.",
+      "ref": "If it's low tide the crab crawls.",
+      "chrf": 15.11
+    },
+    {
+      "src": "Kaling yumene me kahamanun se kuskap.",
+      "hyp": "The kaling is eating a fish, it's eating the fish's belly.",
+      "ref": "That pan's bottom is black.",
+      "chrf": 13.85
+    },
+    {
+      "src": "Tomi kieunbon Yasin emunbon naulelukta mier naukoup.",
+      "hyp": "Tomi's father and Yasin's father are fishing, they are catching a lot of fish.",
+      "ref": "Tomi's wife and Yasin's mother meet each other and they hug each other.",
+      "chrf": 36.68
+    },
+    {
+      "src": "Bakri emun anat marok ma toni sor saerak ba mambon.",
+      "hyp": "Bakri's mother is cooking rice, but there's not enough.",
+      "ref": "Bakri's mother fooled me, she said there is no fish but there is.",
+      "chrf": 39.38
+    },
+    {
+      "src": "Suci mok nerunggoa perna.",
+      "hyp": "Suci's mother is cooking.",
+      "ref": "Suci drinks water from a mug.",
+      "chrf": 18.11
+    },
+    {
+      "src": "Pas yume he kaborko pak raman.",
+      "hyp": "That man's father is sick.",
+      "ref": "That woman is six months pregnant.",
+      "chrf": 21.12
+    }
+  ]
+}

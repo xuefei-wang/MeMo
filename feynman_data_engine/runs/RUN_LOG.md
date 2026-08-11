@@ -120,3 +120,16 @@ Field standard learner (SIEVE Qwen3-8B, Cartridges/EntiGraph Llama-3-8B) = 8B-cl
   gate (verify generator reasoning vs oracle); ablation ladder; SIEVE/Cartridges incumbents.
 - Deliverables (all committed): FINDINGS.md, runs/grid/curve_{within20,medrelerr}.png,
   results.json, scripts/{run_engine,run_grid,plot_curve,analyze}.py, engine/, learner/.
+
+## MTOB @ Qwen3-8B grid (knowledge-bound substrate)
+- Floor (untrained, no ctx) 15.9 chrF; ICL ceiling ~27. Shared gold base (375 pairs);
+  budget = added synthetic only. Closed-book ke chrF, n=50, no-think.
+- n=2 LOOKED significant at 20k (+1.17, p=0.042 per-sentence). n=4 CORRECTED it:
+  two new extraction seeds (21.50/22.22) lifted ext mean; gap -> +0.34 (6k) / +0.59 (20k),
+  BOTH n.s. (p=0.45 / 0.24). Same over-read lesson as RuleArena.
+- 4-seed means: 6k ext 21.10 / fey 21.44 | 20k ext 21.69 / fey 22.28. fey>=ext everywhere.
+- Compute: fey uses FEWER completion tokens (-15%/-9%) -> NO compute tax (vs RuleArena 1.6x).
+  Prefill 4.8x (re-sent book), ~free under vLLM prefix cache.
+- VERDICT: no confirmed win at n=4, but positive-and-free lean that widens with budget --
+  materially better than the RuleArena null-and-taxed result. Needs more power, not a new
+  mechanism. Next: more seeds + mid budget (~12k); ek direction; data-quality gate.

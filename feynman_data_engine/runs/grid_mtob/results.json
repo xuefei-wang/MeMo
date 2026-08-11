@@ -2,70 +2,73 @@
   {
     "mode": "extraction_only",
     "budget": 6000,
-    "seed": 0,
-    "synth_tokens": 6423,
+    "seed": 2,
+    "synth_tokens": 6420,
     "gen_tokens": 6144,
     "n_notes": 12,
-    "chrf": 21.142
+    "chrf": 21.495
   },
   {
     "mode": "extraction_only",
     "budget": 6000,
-    "seed": 1,
-    "synth_tokens": 6422,
-    "gen_tokens": 6144,
+    "seed": 3,
+    "synth_tokens": 6405,
+    "gen_tokens": 6130,
     "n_notes": 12,
-    "chrf": 20.57
+    "chrf": 21.212
   },
   {
     "mode": "extraction_only",
     "budget": 20000,
-    "seed": 0,
-    "synth_tokens": 20013,
+    "seed": 2,
+    "synth_tokens": 20012,
     "gen_tokens": 18432,
     "n_notes": 58,
-    "chrf": 21.823
+    "chrf": 22.216
   },
   {
     "mode": "extraction_only",
     "budget": 20000,
-    "seed": 1,
-    "error": "[Errno 2] No such file or directory: '/data/xwang3/Projects/MeMo/feynman_data_engine/runs/grid_mtob/extraction_only__b20000__s1/eval.json'"
-  },
-  {
-    "mode": "feynman_core",
-    "budget": 6000,
-    "seed": 0,
-    "synth_tokens": 6197,
-    "gen_tokens": 5228,
+    "seed": 3,
+    "synth_tokens": 20025,
+    "gen_tokens": 18432,
     "n_notes": 58,
-    "chrf": 21.602
+    "chrf": 21.884
   },
   {
     "mode": "feynman_core",
     "budget": 6000,
-    "seed": 1,
-    "synth_tokens": 6101,
-    "gen_tokens": 5076,
-    "n_notes": 56,
-    "chrf": 21.224
+    "seed": 2,
+    "synth_tokens": 6092,
+    "gen_tokens": 5107,
+    "n_notes": 53,
+    "chrf": 21.235
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 6000,
+    "seed": 3,
+    "synth_tokens": 6094,
+    "gen_tokens": 5375,
+    "n_notes": 55,
+    "chrf": 21.718
   },
   {
     "mode": "feynman_core",
     "budget": 20000,
-    "seed": 0,
-    "synth_tokens": 20064,
-    "gen_tokens": 17037,
-    "n_notes": 174,
-    "chrf": 22.349
+    "seed": 2,
+    "synth_tokens": 20065,
+    "gen_tokens": 16585,
+    "n_notes": 177,
+    "chrf": 22.392
   },
   {
     "mode": "feynman_core",
     "budget": 20000,
-    "seed": 1,
-    "synth_tokens": 20105,
-    "gen_tokens": 16523,
+    "seed": 3,
+    "synth_tokens": 20108,
+    "gen_tokens": 17090,
     "n_notes": 176,
-    "chrf": 22.652
+    "chrf": 21.719
   }
 ]
