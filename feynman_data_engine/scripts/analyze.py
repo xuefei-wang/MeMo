@@ -54,15 +54,18 @@ def main():
     # pool per-problem flags across seeds, keyed by (mode, budget)
     pooled = defaultdict(list)
     gen_tokens = defaultdict(list)
+    per_seed = defaultdict(dict)  # (mode,budget) -> {seed: within20}
     for ev in grid.glob("*/eval.json"):
         cell = ev.parent.name  # mode__bBUDGET__sSEED
         try:
             mode, b, s = cell.split("__")
-            budget = int(b[1:])
+            budget = int(b[1:]); seed = int(s[1:])
         except Exception:
             continue
         results = json.loads(ev.read_text())["results"]
-        pooled[(mode, budget)] += within_flags(results, args.frac)
+        flags = within_flags(results, args.frac)
+        pooled[(mode, budget)] += flags
+        per_seed[(mode, budget)][seed] = sum(flags) / len(flags) if flags else 0.0
         meta = json.loads((ev.parent / "meta.json").read_text())
         gen_tokens[(mode, budget)].append(meta["total_gen_completion_tokens"])
 
@@ -88,6 +91,21 @@ def main():
         f = gen_tokens.get(("feynman_core", budget))
         if e and f:
             print(f"  b{budget}: {sum(f)/len(f)/(sum(e)/len(e)):.2f}x")
+
+    # seed-level PAIRED diffs (fey - ext at the same seed): the right unit of
+    # replication for training-randomness noise.
+    print("\nseed-level paired diffs (fey - ext within20, per seed):")
+    for budget in budgets:
+        fs = per_seed.get(("feynman_core", budget), {})
+        es = per_seed.get(("extraction_only", budget), {})
+        seeds = sorted(set(fs) & set(es))
+        diffs = [fs[s] - es[s] for s in seeds]
+        if not diffs:
+            continue
+        mean = sum(diffs) / len(diffs)
+        allpos = all(d > 0 for d in diffs)
+        print(f"  b{budget}: n_seeds={len(diffs)} diffs={[round(d,3) for d in diffs]} "
+              f"mean={mean:+.3f} all_positive={allpos}")
 
 
 if __name__ == "__main__":
