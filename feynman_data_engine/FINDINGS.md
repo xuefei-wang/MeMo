@@ -34,47 +34,46 @@ arithmetic), so G2 is measured as a **relative** comparison (feynman-data vs
 extraction-data training the *same* 3B) on a **graded** metric (within-20% of gold).
 A relative comparison needs metric *resolution*, not a high absolute ceiling.
 
-## Result (G2) — Grid: {extraction, feynman} × budget × 2 seeds
+## Result (G2) — Grid: {extraction, feynman} × 3 budgets × **4 seeds**
 
 **Base floor** (untrained Qwen2.5-3B, closed-book, n=100): within20 = 0.02, medRelErr = 0.66.
 
-| budget | engine | within20 (↑) | medRelErr (↓) | gen tokens |
+within20, mean over 4 seeds (per-seed spread in brackets):
+
+| budget | extraction | feynman | fey − ext | compute premium |
 |---|---|---|---|---|
-| 30k | extraction | 0.045 | 0.744 | 23.6k |
-| 30k | feynman | 0.050 | 0.729 | 38.5k |
-| 90k | extraction | 0.060 | 0.776 | 69k |
-| 90k | feynman | 0.070 | 0.840 | 113k |
-| 200k | extraction | 0.100 | 0.642 | 154k |
-| 200k | feynman | **0.125** | 0.719 | 231k |
+| 30k  | 0.040 [0.02–0.07] | 0.048 [0.04–0.06] | +0.008 | 1.67× |
+| 90k  | 0.068 [0.06–0.08] | 0.085 [0.07–0.12] | **+0.017** | 1.60× |
+| 200k | 0.090 [0.05–0.12] | 0.098 [0.06–0.13] | +0.008 | 1.52× |
 
-**Bootstrap (pooled per-problem across seeds, 95% CI):**
+**Bootstrap (pooled per-problem, 95% CI) — none significant:**
+30k +0.007 [−0.022,+0.035] · 90k +0.018 [−0.020,+0.055] · 200k +0.008 [−0.033,+0.048].
 
-| budget | feynman − extraction (within20) | significant? | compute premium |
-|---|---|---|---|
-| 30k | +0.005 [−0.035, +0.045] | no (CI spans 0) | 1.63× |
-| 90k | +0.010 [−0.035, +0.055] | no (CI spans 0) | 1.63× |
-| 200k | **+0.025** [−0.035, +0.090] | no (CI spans 0) | 1.50× |
+**Seed-level paired diffs (fey−ext, per seed):**
+30k [−.01,.02,.01,.01] · 90k [.01,.01,.05,.00] · 200k [.01,.04,−.03,.01] — mostly
+positive, but not unanimously; one 200k seed favours extraction.
 
 Plots: `runs/grid/curve_within20.png`, `runs/grid/curve_medrelerr.png` (both budget axes).
 
-## Honest read (full 3-point curve)
+## Honest read (full 3-budget × 4-seed grid)
 
-1. **A consistent, *growing* advantage — but not yet significant.** Feynman's within20
-   edge widens monotonically with budget: **+0.005 → +0.010 → +0.025**. At 200k feynman
-   is ~**25% relatively better** (0.125 vs 0.100), and both engines finally lift clearly
-   off the floor (0.02). The direction is stable across all three budgets and both seeds —
-   but the bootstrap CI still spans 0 (2 seeds is under-powered for a ~2-point effect).
-2. **The loop is not free.** Feynman spends **1.5–1.6× generator compute**. On the
-   *compute* axis (right panel) its edge shrinks and extraction is more efficient in the
-   mid-range — the emitted-token win is partly bought with extra generator calls.
-3. **Training helps most at scale.** At 200k, extraction's median-rel-err (0.64) finally
-   returns to ~the untrained floor (0.66) and within20 doubles vs 90k — the 3B needs
-   substantial data before the procedure sticks. At low budget SFT mostly adds variance.
-4. **Verdict:** *promising but unconfirmed.* The Feynman recipe shows the predicted
-   budget-scaling behaviour (its advantage grows exactly where failure-driven curricula
-   should help — once there's enough budget to skip the easy and concentrate on the hard),
-   but this thin slice at 3B scale cannot yet call it a win. The right next step is power
-   (more seeds) and a task-capable learner, not a new mechanism.
+1. **A small, consistent positive lean — within noise.** Feynman's mean within20 is
+   ≥ extraction at every budget (+0.008, +0.017, +0.008), but seed variance is large
+   (extraction at 200k spans 0.05–0.12) and every CI spans 0. **No confirmed advantage.**
+2. **Methodological catch — power matters.** The 2-seed run suggested a *monotonically
+   growing* edge (+0.005→+0.010→+0.025, both seeds positive at 200k). Two more seeds
+   flattened it: the 200k diff fell to +0.008 and one new seed favoured extraction. The
+   "growing trend" was partly a small-sample artifact — a caution logged for the full study.
+3. **The loop is not free.** Feynman costs **1.5–1.7× generator compute**. On the *compute*
+   axis its already-small edge all but vanishes; extraction is more compute-efficient
+   mid-range. Any real Feynman value must clear this ~1.6× tax.
+4. **Both engines clearly beat the floor and scale with budget** (0.02 → ~0.09–0.10 at
+   200k). Synthetic worked-example data *works*; which recipe generates it barely moves
+   the needle at 3B scale, where task *capability* — not knowledge coverage — is binding.
+5. **Verdict:** *no confirmed win for Feynman on this slice.* A persistent but
+   non-significant positive lean, bought with extra compute. The mechanism is sound and
+   implemented; discriminating it needs (a) more seeds for power and (b) a **task-capable
+   learner (≥14B)** so the ceiling isn't capacity-bound — not a new mechanism.
 
 ## What this de-risked (and what it did not)
 

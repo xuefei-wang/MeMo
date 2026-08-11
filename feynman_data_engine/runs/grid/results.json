@@ -27,6 +27,32 @@
   },
   {
     "mode": "extraction_only",
+    "budget": 30000,
+    "seed": 2,
+    "emitted_tokens": 30267,
+    "gen_completion_tokens": 22959,
+    "n_examples": 35,
+    "within20": 0.03,
+    "within10": 0.02,
+    "median_rel_err": 0.6369,
+    "mean_rel_err": 0.6633,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 30000,
+    "seed": 3,
+    "emitted_tokens": 30428,
+    "gen_completion_tokens": 23581,
+    "n_examples": 33,
+    "within20": 0.04,
+    "within10": 0.01,
+    "median_rel_err": 0.8105,
+    "mean_rel_err": 0.7404,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
     "budget": 90000,
     "seed": 0,
     "emitted_tokens": 90319,
@@ -53,6 +79,32 @@
   },
   {
     "mode": "extraction_only",
+    "budget": 90000,
+    "seed": 2,
+    "emitted_tokens": 90473,
+    "gen_completion_tokens": 69771,
+    "n_examples": 98,
+    "within20": 0.07,
+    "within10": 0.04,
+    "median_rel_err": 0.7647,
+    "mean_rel_err": 0.7174,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 90000,
+    "seed": 3,
+    "emitted_tokens": 90720,
+    "gen_completion_tokens": 69978,
+    "n_examples": 97,
+    "within20": 0.08,
+    "within10": 0.03,
+    "median_rel_err": 0.9356,
+    "mean_rel_err": 0.8823,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
     "budget": 200000,
     "seed": 0,
     "emitted_tokens": 200831,
@@ -75,6 +127,32 @@
     "within10": 0.05,
     "median_rel_err": 0.6064,
     "mean_rel_err": 0.5988,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 200000,
+    "seed": 2,
+    "emitted_tokens": 200755,
+    "gen_completion_tokens": 153943,
+    "n_examples": 220,
+    "within20": 0.11,
+    "within10": 0.03,
+    "median_rel_err": 0.9088,
+    "mean_rel_err": 0.7071,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "extraction_only",
+    "budget": 200000,
+    "seed": 3,
+    "emitted_tokens": 200578,
+    "gen_completion_tokens": 153640,
+    "n_examples": 222,
+    "within20": 0.05,
+    "within10": 0.03,
+    "median_rel_err": 0.8594,
+    "mean_rel_err": 0.771,
     "exact_acc": 0.0
   },
   {
@@ -105,6 +183,32 @@
   },
   {
     "mode": "feynman_core",
+    "budget": 30000,
+    "seed": 2,
+    "emitted_tokens": 30324,
+    "gen_completion_tokens": 40328,
+    "n_examples": 33,
+    "within20": 0.04,
+    "within10": 0.01,
+    "median_rel_err": 0.9457,
+    "mean_rel_err": 0.893,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 30000,
+    "seed": 3,
+    "emitted_tokens": 30424,
+    "gen_completion_tokens": 39399,
+    "n_examples": 31,
+    "within20": 0.05,
+    "within10": 0.04,
+    "median_rel_err": 0.7161,
+    "mean_rel_err": 0.7602,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
     "budget": 90000,
     "seed": 0,
     "emitted_tokens": 90664,
@@ -131,6 +235,32 @@
   },
   {
     "mode": "feynman_core",
+    "budget": 90000,
+    "seed": 2,
+    "emitted_tokens": 90491,
+    "gen_completion_tokens": 102079,
+    "n_examples": 99,
+    "within20": 0.12,
+    "within10": 0.07,
+    "median_rel_err": 0.9442,
+    "mean_rel_err": 0.7354,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 90000,
+    "seed": 3,
+    "emitted_tokens": 90619,
+    "gen_completion_tokens": 116611,
+    "n_examples": 95,
+    "within20": 0.08,
+    "within10": 0.04,
+    "median_rel_err": 0.9231,
+    "mean_rel_err": 0.7738,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
     "budget": 200000,
     "seed": 0,
     "emitted_tokens": 200573,
@@ -153,6 +283,32 @@
     "within10": 0.03,
     "median_rel_err": 0.8359,
     "mean_rel_err": 1.2679,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 200000,
+    "seed": 2,
+    "emitted_tokens": 200841,
+    "gen_completion_tokens": 235298,
+    "n_examples": 213,
+    "within20": 0.08,
+    "within10": 0.04,
+    "median_rel_err": 0.801,
+    "mean_rel_err": 0.7017,
+    "exact_acc": 0.0
+  },
+  {
+    "mode": "feynman_core",
+    "budget": 200000,
+    "seed": 3,
+    "emitted_tokens": 200317,
+    "gen_completion_tokens": 235963,
+    "n_examples": 217,
+    "within20": 0.06,
+    "within10": 0.03,
+    "median_rel_err": 0.741,
+    "mean_rel_err": 0.6934,
     "exact_acc": 0.0
   }
 ]

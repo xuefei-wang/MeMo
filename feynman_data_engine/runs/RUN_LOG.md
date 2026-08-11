@@ -87,13 +87,17 @@ Read:
 - Net: weak/null, slight feynman edge on within20 that GROWS with budget -> motivates
   a higher-budget wave (the "needs budget to pay off" hypothesis).
 
-## Grid wave 2 (200k added) — full 3-point curve
-- within20 (mean/2 seeds): 30k ext .045/fey .050 | 90k .060/.070 | 200k .100/.125.
-- feynman-ext diff GROWS: +0.005 -> +0.010 -> +0.025 (monotonic, both seeds same sign).
-- Bootstrap CIs still span 0 (under-powered at 2 seeds); compute premium 1.5-1.6x.
-- At 200k both engines lift off floor; extraction medRelErr 0.64 ~ base floor 0.66.
-- Verdict: PROMISING but UNCONFIRMED. Feynman shows the predicted budget-scaling
-  (advantage grows where failure-driven curricula should help). Next: more seeds +
-  task-capable learner (>=14B), not a new mechanism.
-- Deliverables: FINDINGS.md, runs/grid/curve_{within20,medrelerr}.png, results.json,
-  scripts/{run_grid,plot_curve,analyze}.py. All committed.
+## Grid final (3 budgets x 4 seeds) — the honest result
+- 2-seed run LOOKED like a growing monotonic edge (+.005->+.010->+.025). Adding
+  seeds 2,3 FLATTENED it: 4-seed within20 diff = +.008 / +.017 / +.008. The 200k
+  "trend" was partly small-sample noise (one new seed favored extraction).
+- 4-seed within20: 30k .040/.048 | 90k .068/.085 | 200k .090/.098 (ext/fey).
+  feynman mean >= extraction everywhere but ALL bootstrap CIs span 0; seed spread
+  huge (ext 200k: 0.05-0.12). Compute premium 1.5-1.7x.
+- VERDICT: no confirmed Feynman win on this slice. Small persistent positive lean
+  within noise, bought with ~1.6x compute. Both engines beat floor (.02->~.10) and
+  scale with budget. At 3B, task CAPABILITY (not knowledge) is binding.
+- Next (later specs): more seeds for power; task-capable learner (>=14B); data-quality
+  gate (verify generator reasoning vs oracle); ablation ladder; SIEVE/Cartridges incumbents.
+- Deliverables (all committed): FINDINGS.md, runs/grid/curve_{within20,medrelerr}.png,
+  results.json, scripts/{run_engine,run_grid,plot_curve,analyze}.py, engine/, learner/.
