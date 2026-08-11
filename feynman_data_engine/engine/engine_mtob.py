@@ -80,11 +80,13 @@ def _wordlist_examples(wordlist: dict, rng, k: int) -> list[dict]:
 def _student_translate(student: LLM, kal: str, cheatsheet: str) -> str:
     user = (f"Reference notes:\n{cheatsheet}\n\n" if cheatsheet else "") + \
            f"Kalamang: {kal}\nEnglish:"
-    # thinking REQUIRED for translation (no-think Qwen3 echoes the source)
+    # no-think: the student's context is only the small cheat-sheet (never the full
+    # book), so it translates without echoing -- and ~10x faster than thinking. The
+    # student is sized to the LEARNER (8B) so its failures track the learner's frontier.
     out = student.chat([{"role": "system", "content": TRANSLATE_SYS},
                         {"role": "user", "content": user}],
-                       purpose="probe", temperature=0.0, max_tokens=2048, think=True)
-    return _clean(_strip_think(out))
+                       purpose="probe", temperature=0.0, max_tokens=256, think=False)
+    return _clean(out)
 
 
 def _diagnose_note(gen: LLM, kal: str, eng: str, student_hyp: str,
@@ -102,8 +104,8 @@ def _diagnose_note(gen: LLM, kal: str, eng: str, student_hyp: str,
             f"Student's wrong translation: {student_hyp}\n\n"
             f"What vocabulary and grammar did the student miss? State it plainly."},
     ]
-    return _strip_think(gen.chat(msgs, purpose="diagnose", temperature=0.5,
-                                 max_tokens=2048))
+    return gen.chat(msgs, purpose="diagnose", temperature=0.5, max_tokens=512,
+                    think=False)
 
 
 # --------------------------------------------------------------------------- #
@@ -131,7 +133,7 @@ def run_extraction(gen, tok, ledger, budget_tokens, seed, book_ctx, wordlist,
                  {"role": "user", "content":
                   f"=== REFERENCE ===\n{book_ctx}\n=== END ===\n\n"
                   f"Explain this section for translation:\n{c['text'][:1500]}"}],
-                purpose="teach", temperature=0.7, max_tokens=2048))
+                purpose="teach", temperature=0.7, max_tokens=512, think=False))
             ex = _note_example(c["title"], note)
         elif vi < len(vocab):
             ex = vocab[vi]; vi += 1
