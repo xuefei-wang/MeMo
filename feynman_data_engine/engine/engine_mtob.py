@@ -190,4 +190,8 @@ def run_feynman(gen, student, tok, ledger, budget_tokens, seed, book_ctx,
             cheatsheet = (cheatsheet + "\n- " + note.strip())[-4000:]
         note_ex = _note_example(f"translate: {kal[:40]}", note)
         out.append(note_ex); ledger.record_emitted(_count(tok, note_ex), 1)
+    # the running cheat-sheet is a compressed, failure-targeted study note. Persist it
+    # so it can be evaluated as amortized context (base model, no SFT) or prepended at
+    # eval on top of the SFT learner -- the "feynman-cheatsheet" method.
+    ledger.cheatsheet = cheatsheet
     return out
