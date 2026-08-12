@@ -266,10 +266,11 @@ cheatsheet other readings: base+cheatsheet (weight-free context) 19.96, SFT+chea
 -- both BELOW the closed-book SFT 20.93, i.e. the notes bake into weights better than they
 serve as amortised context here.
 
-1. **The Feynman CHEATSHEET is the first real positive.** It beats the gold anchor by +4.6
+1. **The NOTES arm is the first real positive.** The cheatsheet beats the gold anchor by +4.6
    (16.32 -> 20.93), SIEVE-GEN by +1.85, and Feynman-selection by +3.4 -- with **~21x fewer
-   examples** (787 vs 16,759). The gold anchor alone is only 16.32, so this is the failure-
-   targeted NOTES, not the anchor. Quality/compression beats volume for this task.
+   examples** (787 vs 16,759). Gold alone is only 16.32, so this is the NOTES, not the anchor.
+   **But the follow-up extraction control (next section) shows the driver is the notes FORMAT,
+   not the Feynman failure-loop** -- plain uniform-notes extraction matches or beats it.
 2. **Feynman SELECTION still loses.** feynman_gen < sieve_gen in BOTH regimes (hard 17.52 <
    19.09; soft 16.21 < 18.08). The hardest-for-student tail is worse training data than
    diverse coverage -- consistent with every prior experiment.
@@ -279,6 +280,63 @@ serve as amortised context here.
 4. **Caveat: 1 seed.** This project's recurring lesson is that 1-2 seed leans vanish under
    replication. The cheatsheet gap (+1.85 to +4.6) is larger than any prior lean, but it is
    NOT yet seed-confirmed. Treat as a strong signal to replicate, not a settled result.
+
+# Notes >> synthetic pairs — and the driver is the notes format, not Feynman
+
+The "cheatsheet wins" headline was missing a control: the 16K run never ran the EXTRACTION
+arm (uniform grammar notes + vocab, no failure loop). Adding it, plus an inference-scaling
+eval and a budget frontier, settles what actually drives the win.
+
+## Extraction control (60K-token notes budget, closed-book ke chrF)
+
+| data engine (hard SFT, gold anchor + engine data) | seed 0 | seed 1 | examples |
+|---|---|---|---|
+| extraction (uniform grammar notes + vocab) | 21.88 | 20.38 | ~1,847 |
+| feynman cheatsheet (failure-targeted notes) | 20.93 | (deferred) | 787 |
+| SIEVE-GEN (synthetic translation pairs) | 19.09 | | 16,759 |
+| gold anchor | 16.32 | | 375 |
+
+1. **The winner is the NOTES format, not Feynman.** Plain extraction (21.9 / 20.4) matches or
+   beats the failure-targeted cheatsheet (20.9), with a simpler, cheaper engine (no student
+   probe, no diagnosis). Consistent with the earlier 4-seed grid where extraction ~= feynman.
+2. **Notes >> synthetic pairs** (~21 vs 19.1), robust across both seeds.
+3. So "pursue the cheatsheet" is really "pursue notes-as-data." The Feynman failure-loop is
+   not the active ingredient.
+
+## Studying vs cramming (inference-budget scaling, seed 0, closed-book chrF)
+
+Self-consistency budget K, MBR-selected (reference-free chrF centroid):
+
+| K | extraction | cheatsheet | SIEVE pairs | gold |
+|---|---|---|---|---|
+| 1  | 20.85 | 20.46 | 18.84 | 17.80 |
+| 4  | 22.06 | 22.05 | 19.75 | 19.55 |
+| 16 | 23.40 | 23.09 | 20.27 | 19.70 |
+| **slope K1->K16** | **+2.55** | **+2.62** | +1.43 | +1.90 |
+
+Notes-trained models **STUDY** -- chrF rises steeply with inference compute (+2.6, to ~23,
+nearing the ICL-gold ceiling ~27). Synthetic-pairs **CRAM** -- the flattest slope (+1.43),
+worse even than the gold anchor (+1.90). Pairs lose on BOTH level and inference-scalability:
+they teach surface patterns that don't compound with reasoning. (The scalar `expertise`
+metric is exact-match-based and degenerate on continuous chrF; the curve is the signal.)
+
+## Budget frontier (reported with its confound)
+
+SIEVE-pairs subsampled to matched token budgets, FIXED 3 epochs:
+
+| budget | 15K | 60K | 150K | 400K | 1.13M (full) |
+|--------|-----|-----|------|------|------|
+| chrF   | 16.32 | 15.35 | 14.47 | 16.58 | 19.09 |
+| ~steps | 28 | 58 | 119 | 290 | 785 |
+
+Non-monotonic because FIXED epochs makes step-count scale with budget -- the curve conflates
+data budget with training compute (few steps -> stays near the gold init; a little noisy-pair
+training HURTS; only full budget recovers). So this is NOT a clean data-budget frontier, and
+a clean one must fix training STEPS -- which then trades in an overfitting confound on the
+small-data points (intrinsic to the budget axis). What survives cleanly:
+- **matched 60K budget: notes 21.9 / 20.9 >> pairs 15.3** (+6 chrF).
+- **notes @ 60K (21.9) > pairs @ full 1.13M (19.09)** -- 20x less data AND less compute.
+Notes dominate pairs at every point measured.
 
 # RuleArena @ 8B — still capability-bound (revisit of the 3B null)
 
@@ -295,19 +353,26 @@ headroom the 3B null lacked (within-20% doubles 0.13 -> 0.27; median error 0.90 
 a 27% within-20% ceiling is too low/noisy to be a clean data-engine testbed. MTOB stays the
 substrate with signal.
 
-## Project-wide verdict (six experiments) — the operationalisation matters
+## Project-wide verdict — it's the notes format, not Feynman
 
-The earlier "no confirmed Feynman advantage" was testing ONE operationalisation: Feynman as
-*selection* (keep the hardest-for-student tail). That verdict holds and strengthens -- across
-RuleArena@3B, MTOB@8B notes-engine (4 seeds), matched-SFT, soft-distillation, and now the 16K
-hard+soft runs, Feynman-**selection** is <= SIEVE / <= baseline every time.
+Both Feynman operationalisations are now settled, and neither is the story:
+- **Feynman-as-selection** (keep the hardest-for-student tail): does NOT help. <= SIEVE /
+  <= baseline across RuleArena@3B, MTOB notes-grid (4 seeds), matched-SFT, soft distillation,
+  and the 16K hard+soft runs.
+- **Feynman-as-cheatsheet** (failure-targeted notes): beats synthetic pairs, but NOT because
+  of the failure-targeting -- plain uniform-notes extraction matches or beats it (n=2). The
+  Feynman-specific machinery adds nothing over ordinary note extraction.
 
-But Feynman as *cheatsheet* -- the actual explain / fail / refine-notes loop -- is a DIFFERENT
-data engine, and at 16K it is the best arm by a clear margin with ~21x less data. So the
-updated, honest claim splits in two:
-- **Feynman-as-selection: does not help** (five experiments, robust).
-- **Feynman-as-cheatsheet: first real positive, 1 seed** -- beats SIEVE-GEN and the gold
-  anchor on closed-book chrF; needs 2-3 seed replication before it is called confirmed.
+The real, robust, engine-agnostic finding: **for knowledge injection, distilling the corpus
+into explanatory notes (a compact "textbook": grammar explanations + vocab) is a strictly
+better SFT target than synthetic input-output pairs** -- higher chrF at matched or 20x-smaller
+budget, AND more inference-scalable (notes "study", pairs "cram"). The direction to pursue is
+the notes/textbook data engine, not the Feynman loop.
+
+Still open: n=2+ on the main 16K arms (seed-1 training deferred on GPU contention; extraction
+already replicated at n=2); a clean fixed-STEP frontier if a figure is wanted; SIEVE's exact
+full-FT + top-100-logit regime (what separates our 19.1 from their 24.48); and a second
+knowledge-bound substrate to show notes-as-data generalises beyond MTOB.
 
 Still untested: SIEVE's exact full-FT + top-100-logit regime (needs ~8 GPUs), which is what
 separates our 19.09 from their 24.48.
