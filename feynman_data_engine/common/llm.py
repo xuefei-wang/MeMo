@@ -64,6 +64,31 @@ class LLM:
                 time.sleep(2.0 * (attempt + 1))
         raise RuntimeError(f"LLM call failed after {self.max_retries} retries: {last_err}")
 
+    def complete(self, prompt: str, purpose: str, temperature: float | None = None,
+                 max_tokens: int = 256, seed: int | None = None,
+                 stop: list[str] | None = None) -> str:
+        """One text completion (for BASE models with no chat template), logged."""
+        temp = self.temperature if temperature is None else temperature
+        last_err = None
+        for attempt in range(self.max_retries):
+            t0 = time.time()
+            try:
+                resp = self.client.completions.create(
+                    model=self.ep.model, prompt=prompt, temperature=temp,
+                    max_tokens=max_tokens, seed=seed, stop=stop)
+                dt = time.time() - t0
+                u = resp.usage
+                self.ledger.record_call(
+                    purpose,
+                    prompt_tokens=getattr(u, "prompt_tokens", 0),
+                    completion_tokens=getattr(u, "completion_tokens", 0),
+                    wall_s=dt)
+                return resp.choices[0].text or ""
+            except Exception as e:  # noqa: BLE001 -- retry any transient server error
+                last_err = e
+                time.sleep(2.0 * (attempt + 1))
+        raise RuntimeError(f"LLM completion failed after {self.max_retries} retries: {last_err}")
+
     def chat_json(self, messages: list[dict], purpose: str, **kw) -> dict | list:
         """Chat + best-effort JSON parse from the reply (handles ```json fences)."""
         txt = self.chat(messages, purpose, **kw)
