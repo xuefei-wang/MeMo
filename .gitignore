@@ -221,3 +221,14 @@ __marimo__/
 # Local files and directories
 .DS_Store
 Paper.pdf
+
+# External repo clones (e.g. the SIEVE reference implementation)
+external/
+
+# Head-to-head / SIEVE-regime run artifacts (keep only aggregate results + FINDINGS)
+feynman_data_engine/runs/**/records.jsonl
+feynman_data_engine/runs/**/sections.json
+feynman_data_engine/runs/**/cheatsheet.txt
+feynman_data_engine/runs/**/adapter*/
+feynman_data_engine/runs/**/*.log
+feynman_data_engine/runs/_*.sh

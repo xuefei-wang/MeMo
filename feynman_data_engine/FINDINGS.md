@@ -147,3 +147,167 @@ not a new mechanism.
 - More seeds + a mid budget (~12k) to trace curve shape and get seed-level power.
 - ek direction as a transfer check.
 - Data-quality gate (verify generator reasoning vs oracle before emitting).
+
+---
+
+# Head-to-head: Feynman-GEN vs SIEVE-GEN (matched-SFT, MTOB @ Qwen3-8B)
+
+Goal: compare the Feynman data engine against SIEVE's on equal footing -- "match SIEVE,
+differ only in the data engine." SIEVE = decompose the book -> diverse synthetic
+translation queries -> distill. Fully faithful reproduction needs SIEVE's 8-GPU soft
+distillation (top-k logits, ZeRO-3), infeasible on the available 2-3 GPUs, so we ran the
+feasible **matched-SFT** variant (hard labels, applied equally to both arms).
+
+Design: ONE shared candidate factory (SIEVE-GEN's exact 3-step recipe, their prompts;
+gold sentences added as style anchors after a de-risk showed naive gen makes word-salad).
+Each synthetic Kalamang sentence is translated by a teacher WITH the applicable
+grammar/vocab (pseudo-gold answer + SFT target) and scored by a partially-competent
+student (30 gold examples). The two engines differ ONLY in which N they keep from the
+SAME scored pool: **sieve_gen** = a representative sample (diverse coverage); **feynman_gen**
+= the lowest-student-chrF tail (the frontier). Identical LoRA-SFT + closed-book chrF eval.
+
+## De-risk found two design walls (before any large run)
+
+1. **Synthetic-only hard-label SFT trains BELOW floor** (sieve 14.6, feynman 11.1 vs floor
+   15.9). Teacher translations of novel synthetic sentences are noisy labels; SFT overfits
+   the noise. SIEVE's real 24.48 depends on SOFT distillation (noise-robust) -- the
+   matched-SFT concession cannot reach that regime.
+2. **A shared gold base (375 real pairs) is required** and lifts both arms above floor. It
+   also means SIEVE's 16K-synthetic endpoint is the WRONG regime here: 16K noisy synthetic
+   vs 375 gold (~44:1) would re-drown the anchor. We ran the working regime: n=800 synth +
+   gold base.
+
+## Result (n=800 synth + gold base, 3 seeds, closed-book ke chrF)
+
+| arm | s0 | s1 | s2 | mean | stdev |
+|-----|----|----|----|------|-------|
+| sieve_gen  | 18.61 | 19.95 | 19.75 | 19.43 | 0.59 |
+| feynman_gen| 20.20 | 18.91 | 16.68 | 18.60 | 1.45 |
+| gold_only  | 19.53 | 18.95 | 18.81 | 19.10 | 0.31 |
+
+Paired seed diffs: feyn-sieve -0.84 (+1.59/-1.04/-3.07), feyn-gold -0.50, sieve-gold +0.34.
+
+**Honest negative result.** With 3 seeds and the gold_only control:
+1. **Neither synthetic arm beats the gold-only baseline** -- the synthetic data adds ~nothing
+   over the anchor under hard-label SFT (sieve +0.34, feynman -0.50).
+2. **Feynman is worse than SIEVE and 2.5x noisier** (stdev 1.45 vs 0.59). Selecting the
+   hardest sentences selects the noisiest teacher labels -> variance, not signal.
+3. The de-risk's 1-seed +1.3 Feynman "win" was noise -- did not survive 3 seeds. **Third
+   time this project that a 1-2 seed lean vanished under more seeds.**
+
+## What this establishes (and its scope)
+
+- In matched-SFT, the synthetic-translation data engine (SIEVE-GEN's or Feynman's) does not
+  beat a simple gold anchor, and failure-targeting adds noise. The gold base does the work.
+- This does NOT test SIEVE's actual regime (soft distillation), where SIEVE-GEN reaches
+  24.48 -- that needs the 8-GPU infra we could not run. Whether Feynman's targeting helps
+  under soft distillation is untested.
+- Consistent with the whole project: Feynman's data-engine advantage is small-at-best and
+  does not survive proper controls (seeds + a no-op baseline).
+
+---
+
+# Soft-distillation head-to-head (SIEVE's real regime, feasible slice)
+
+Hard-label SFT can't reach SIEVE's regime (it's noise-fragile; trains below floor on
+synthetic-only). SIEVE's 24.48 uses SOFT distillation. We built a feasible version:
+learner/soft_distill.py -- LoRA KL context-distillation on ONE GPU (teacher = frozen
+base WITH the applicable grammar pieces; student = base+LoRA WITHOUT context; match
+distributions over the answer tokens; adapter toggled between passes). Exact (same
+model+tokenizer), no logit storage, no 8-GPU ZeRO-3.
+
+## Result (synthetic-only, n=800, 1 seed, 3 epochs, closed-book ke chrF)
+
+| method | sieve_gen | feynman_gen |
+|--------|-----------|-------------|
+| hard-label SFT | 14.6 | 11.1 |
+| soft distillation | 15.83 | 12.36 |
+
+floor 15.9.
+
+1. **Soft distillation beats hard-label SFT** on the same data (sieve +1.2, feyn +1.3) --
+   the predicted noise-robustness is real.
+2. **But it only reaches the floor** (sieve 15.83 ~= 15.9); it does NOT reproduce SIEVE's
+   24.48 at this slice. Two reasons separate them: SCALE (800 vs SIEVE's 16K) and TEACHER
+   STRENGTH (per-example grammar *pieces* here vs the full book). So this is "synthetic-only
+   barely clears floor at feasible scale," not "soft distillation fails."
+3. **Feynman still loses to SIEVE** under soft distillation too (12.36 vs 15.83) -- the
+   failure-targeting keeps selecting the least-learnable teacher signal, in EVERY regime tried.
+
+# 16K + section teacher: chasing SIEVE, and the cheatsheet reversal
+
+We scaled to SIEVE's budget and a strong teacher, and added the Feynman *cheatsheet* arm
+(the loop's failure-targeted study notes) next to the two selection arms. Four data engines,
+ONE closed-book chrF axis. Only the data engine differs.
+
+- **Section teacher.** The full book is 40K tok > the 16K endpoint, so the teacher conditions
+  on one of 4 FIXED ~10K-tok book sections (prefix-cached in vLLM). Far stronger than SIEVE's
+  6-8 pieces; a feasible stand-in for "full-book teacher."
+- **KV-reuse soft distillation.** A 10K-tok teacher forward per example would be ~20h/arm at
+  16K. Instead each section's KV is cached once (GQA -> ~6 GB for all 4) and only the short
+  `kal`+answer suffix is forwarded. Verified: cached-suffix logits == a full forward (top-1
+  token identical, KL ~1e-2 bf16 noise). This made 16K x 3-epoch soft distillation run in
+  ~15 min/arm on one GPU.
+- Pool: 24,576 candidates in 94 min. Selection contrast is real -- median student-chrF 15.2
+  (sieve random sample) vs 12.5 (feynman hardest tail).
+
+## Result (16K, 1 seed, 3 epochs, closed-book ke chrF; floor 15.9, SIEVE 24.48)
+
+| arm | training | data | examples | chrF |
+|-----|----------|------|----------|------|
+| **feynman_cheatsheet** | hard SFT | gold + failure-notes | 787 | **20.93** |
+| sieve_gen | hard SFT | gold + synthetic | 16,759 | 19.09 |
+| feynman_gen | hard SFT | gold + synthetic | 16,759 | 17.52 |
+| gold_only | hard SFT | gold pairs only | 375 | 16.32 |
+| sieve_gen | soft distill | synthetic only | 16,384 | 18.08 |
+| feynman_gen | soft distill | synthetic only | 16,384 | 16.21 |
+
+cheatsheet other readings: base+cheatsheet (weight-free context) 19.96, SFT+cheatsheet 20.57
+-- both BELOW the closed-book SFT 20.93, i.e. the notes bake into weights better than they
+serve as amortised context here.
+
+1. **The Feynman CHEATSHEET is the first real positive.** It beats the gold anchor by +4.6
+   (16.32 -> 20.93), SIEVE-GEN by +1.85, and Feynman-selection by +3.4 -- with **~21x fewer
+   examples** (787 vs 16,759). The gold anchor alone is only 16.32, so this is the failure-
+   targeted NOTES, not the anchor. Quality/compression beats volume for this task.
+2. **Feynman SELECTION still loses.** feynman_gen < sieve_gen in BOTH regimes (hard 17.52 <
+   19.09; soft 16.21 < 18.08). The hardest-for-student tail is worse training data than
+   diverse coverage -- consistent with every prior experiment.
+3. **We still don't reach SIEVE's 24.48.** Best sieve_gen is 19.09 (hard) / 18.08 (soft),
+   ~5 short. The remaining gap is our LoRA vs SIEVE's full-FT + top-100-logit distillation on
+   8 GPUs -- a training-method gap, not a data-engine gap.
+4. **Caveat: 1 seed.** This project's recurring lesson is that 1-2 seed leans vanish under
+   replication. The cheatsheet gap (+1.85 to +4.6) is larger than any prior lean, but it is
+   NOT yet seed-confirmed. Treat as a strong signal to replicate, not a settled result.
+
+# RuleArena @ 8B — still capability-bound (revisit of the 3B null)
+
+phase0 headroom gate at Qwen3-8B, L0 airline fees, n=100, thinking ON, max 4000 tok:
+
+| condition | exact | within10 | within20 | median rel err |
+|-----------|-------|----------|----------|----------------|
+| closed-book | 0.00 | 0.08 | 0.13 | 0.90 |
+| ICL-gold (rules in context) | 0.03 | 0.17 | 0.27 | 0.69 |
+
+Going 3B -> 8B does NOT open a usable exact-match ceiling: even given all the rules and full
+reasoning, 8B computes the exact fee only 3% of the time. There is a real but weak GRADED
+headroom the 3B null lacked (within-20% doubles 0.13 -> 0.27; median error 0.90 -> 0.69), but
+a 27% within-20% ceiling is too low/noisy to be a clean data-engine testbed. MTOB stays the
+substrate with signal.
+
+## Project-wide verdict (six experiments) — the operationalisation matters
+
+The earlier "no confirmed Feynman advantage" was testing ONE operationalisation: Feynman as
+*selection* (keep the hardest-for-student tail). That verdict holds and strengthens -- across
+RuleArena@3B, MTOB@8B notes-engine (4 seeds), matched-SFT, soft-distillation, and now the 16K
+hard+soft runs, Feynman-**selection** is <= SIEVE / <= baseline every time.
+
+But Feynman as *cheatsheet* -- the actual explain / fail / refine-notes loop -- is a DIFFERENT
+data engine, and at 16K it is the best arm by a clear margin with ~21x less data. So the
+updated, honest claim splits in two:
+- **Feynman-as-selection: does not help** (five experiments, robust).
+- **Feynman-as-cheatsheet: first real positive, 1 seed** -- beats SIEVE-GEN and the gold
+  anchor on closed-book chrF; needs 2-3 seed replication before it is called confirmed.
+
+Still untested: SIEVE's exact full-FT + top-100-logit regime (needs ~8 GPUs), which is what
+separates our 19.09 from their 24.48.
