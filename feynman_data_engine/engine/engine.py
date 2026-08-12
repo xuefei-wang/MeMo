@@ -157,4 +157,7 @@ def run_feynman(gen: LLM, student: LLM, tok, ledger, budget_tokens: int, seed: i
         ex = _sft_example(prompt, sol)
         out.append(ex)
         ledger.record_emitted(_count_tokens(tok, ex), 1)
+    # persist the running cheat-sheet (compressed, failure-targeted study note) so it
+    # can be evaluated as amortized context -- the "feynman-cheatsheet" method.
+    ledger.cheatsheet = cheatsheet
     return out

@@ -52,6 +52,10 @@ def main():
         for ex in data:
             f.write(json.dumps(ex) + "\n")
     ledger.save(outdir / "ledger.json")
+    # persist the feynman cheat-sheet (empty for extraction) for cheatsheet-context eval
+    cheatsheet = getattr(ledger, "cheatsheet", "")
+    if cheatsheet:
+        (outdir / "cheatsheet.txt").write_text(cheatsheet)
     meta = {"mode": args.mode, "budget": args.budget, "seed": args.seed,
             "n_examples": len(data), "wall_s": round(dt, 1),
             "emitted_tokens": ledger.emitted_training_tokens,

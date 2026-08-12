@@ -39,6 +39,9 @@ def main():
     ap.add_argument("--modes", nargs="+", default=["extraction_only", "feynman_core"])
     ap.add_argument("--gen_conc", type=int, default=4)
     ap.add_argument("--epochs", type=float, default=3.0)
+    ap.add_argument("--cheatsheet_eval", action="store_true",
+                    help="also eval feynman cells with base model + cheatsheet as "
+                         "amortized context (no SFT) -- the feynman-cheatsheet method")
     args = ap.parse_args()
 
     root = Path(args.out); root.mkdir(parents=True, exist_ok=True)
@@ -105,6 +108,33 @@ def main():
         for c, s in ex.map(eval_one, list(enumerate(cells))):
             print(f"  eval {c} -> {s}", flush=True)
 
+    # ---- Phase C2: feynman-cheatsheet eval (base model + cheatsheet, no SFT) ----
+    # The blog's amortized-context method: prepend the engine's failure-targeted
+    # cheat-sheet at inference instead of (or on top of) weight updates. Only feynman
+    # cells produce a cheatsheet.txt; extraction cells are skipped.
+    if args.cheatsheet_eval:
+        def cheat_eval_one(idx_cell):
+            idx, cell = idx_cell
+            mode, budget, seed = cell
+            d = cell_dir(root, mode, budget, seed)
+            cheat = d / "cheatsheet.txt"; outp = d / "eval_cheatsheet.json"
+            if outp.exists():
+                return cell, "skip"
+            if not cheat.exists():
+                return cell, "no-cheatsheet"
+            gpu = TRAIN_GPUS[idx % len(TRAIN_GPUS)]
+            rc = sh([PY, str(ROOT / "learner" / "eval_mtob.py"), "--base", BASE,
+                     "--direction", "ke", "--context", "cheatsheet",
+                     "--cheatsheet_file", str(cheat), "--n", "50", "--no_think",
+                     "--bs", "16", "--max_new", "128", "--out", str(outp)],
+                    gpu, d / "eval_cheatsheet.log")
+            return cell, "ok" if rc == 0 else f"FAIL:{rc}"
+
+        print("[grid-mtob] Phase C2: feynman-cheatsheet eval (base + cheatsheet) ...")
+        with ThreadPoolExecutor(max_workers=len(TRAIN_GPUS)) as ex:
+            for c, s in ex.map(cheat_eval_one, list(enumerate(cells))):
+                print(f"  cheat-eval {c} -> {s}", flush=True)
+
     # ---- Phase D: aggregate ----
     rows = []
     for cell in cells:
@@ -113,11 +143,16 @@ def main():
         try:
             meta = json.loads((d / "meta.json").read_text())
             ev = json.loads((d / "eval.json").read_text())["summary"]
-            rows.append({"mode": mode, "budget": budget, "seed": seed,
-                         "synth_tokens": meta["emitted_synthetic_tokens"],
-                         "gen_tokens": meta["total_gen_completion_tokens"],
-                         "n_notes": meta["n_examples"] - 375,
-                         "chrf": ev["corpus_chrf"]})
+            row = {"mode": mode, "budget": budget, "seed": seed,
+                   "synth_tokens": meta["emitted_synthetic_tokens"],
+                   "gen_tokens": meta["total_gen_completion_tokens"],
+                   "n_notes": meta["n_examples"] - 375,
+                   "chrf": ev["corpus_chrf"]}
+            cheat_p = d / "eval_cheatsheet.json"
+            if cheat_p.exists():  # feynman-cheatsheet method (base model + cheatsheet)
+                row["chrf_cheatsheet"] = \
+                    json.loads(cheat_p.read_text())["summary"]["corpus_chrf"]
+            rows.append(row)
         except Exception as e:  # noqa: BLE001
             rows.append({"mode": mode, "budget": budget, "seed": seed, "error": str(e)})
     (root / "results.json").write_text(json.dumps(rows, indent=2))
@@ -126,8 +161,10 @@ def main():
         if "error" in r:
             print(f"  {r['mode']:16s} b{r['budget']:>6} s{r['seed']}  ERROR {r['error']}")
         else:
+            cheat = f" cheatsheet={r['chrf_cheatsheet']:.2f}" if "chrf_cheatsheet" in r else ""
             print(f"  {r['mode']:16s} b{r['budget']:>6} s{r['seed']}  "
-                  f"synth={r['synth_tokens']:>6} gen={r['gen_tokens']:>7} chrF={r['chrf']:.2f}")
+                  f"synth={r['synth_tokens']:>6} gen={r['gen_tokens']:>7} "
+                  f"chrF={r['chrf']:.2f}{cheat}")
 
 
 if __name__ == "__main__":

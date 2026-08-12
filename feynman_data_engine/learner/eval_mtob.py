@@ -32,7 +32,9 @@ def main():
     ap.add_argument("--base", default="Qwen/Qwen3-8B")
     ap.add_argument("--adapter", default=None)
     ap.add_argument("--direction", default="ke", choices=["ke", "ek"])
-    ap.add_argument("--context", choices=["none", "gold"], default="none")
+    ap.add_argument("--context", choices=["none", "gold", "cheatsheet"], default="none")
+    ap.add_argument("--cheatsheet_file", default=None,
+                    help="path to cheatsheet.txt (required when --context cheatsheet)")
     ap.add_argument("--book_size", default="medium")
     ap.add_argument("--max_book_chars", type=int, default=80000)
     ap.add_argument("--n", type=int, default=50)
@@ -47,6 +49,10 @@ def main():
     ctx = None
     if args.context == "gold":
         ctx = mtob.load_grammar_book(args.book_size)[:args.max_book_chars]
+    elif args.context == "cheatsheet":
+        if not args.cheatsheet_file:
+            ap.error("--context cheatsheet requires --cheatsheet_file")
+        ctx = Path(args.cheatsheet_file).read_text()
     prompts = [build_prompt(p.source, args.direction, ctx) for p in test]
 
     tok, model = load_model(args.base, args.adapter)
@@ -63,7 +69,9 @@ def main():
                 "chrf": round(sentence_chrf(h, r), 2)}
                for p, h, r in zip(test, hyps, refs)]
     summary = {"base": args.base, "adapter": args.adapter, "direction": args.direction,
-               "context": args.context, "n": len(test), "corpus_chrf": round(score, 3)}
+               "context": args.context, "cheatsheet_file": args.cheatsheet_file,
+               "n": len(test), "corpus_chrf": round(score, 3),
+               "context_chars": len(ctx) if ctx else 0}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps({"summary": summary, "samples": samples}, indent=2))
     print(f"[mtob-eval] corpus_chrf={score:.3f} -> {args.out}")
