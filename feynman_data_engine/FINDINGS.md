@@ -338,6 +338,50 @@ small-data points (intrinsic to the budget axis). What survives cleanly:
 - **notes @ 60K (21.9) > pairs @ full 1.13M (19.09)** -- 20x less data AND less compute.
 Notes dominate pairs at every point measured.
 
+## Why notes win: the pairs hallucinate the language
+
+Digging into WHY sieve underperforms extraction. It is NOT crude noise -- only 6.6% of sieve
+pairs are surface-degenerate, lengths match gold, and the pairs DO help (gold-only 16.32 ->
++16K pairs 19.09, i.e. +2.8). The real mechanism is specific to low-resource GENERATION:
+
+- **47% of the synthetic Kalamang sentences contain >=1 non-Kalamang word**; 16.8% of all
+  Kalamang tokens are unattested in the book/wordlist/gold -- vs **0%** for real gold sentences.
+- The contamination is diagnostic: Indonesian/Malay leakage (`makan` eat, `kopi` coffee,
+  `taman` garden, `balik` return), proper names (`Kawe`, `Rina`), and invented morphology.
+- Cause: Kalamang is genuinely low-resource, so the 8B generator does NOT know it. Asked to
+  WRITE a Kalamang sentence it drifts to the nearest high-resource neighbour (Indonesian) and
+  invents words; the teacher then translates the half-hallucinated sentence into a fluent but
+  spurious pair. Surface-degeneracy filters miss it -- the output is well-formed, just
+  wrong-language.
+- **Identical for sieve and feynman** (16.8% vs 16.9% unattested tokens, ~47% of sentences
+  both) -- it is a property of the shared generated POOL, not the selection, and it does not
+  track difficulty (unattested-rate by student band is flat/U-shaped: 20/16/15/22%). So it is
+  NOT what separates the two selection arms.
+- **Intrinsic to SIEVE's design, not our reimplementation.** The hallucination is in the
+  sentence-GENERATION step ("write a Kalamang sentence"), which is SIEVE-GEN's recipe followed
+  faithfully. Stronger training (their full-FT + top-100-logit soft distill) may tolerate the
+  noisy LABELS better, but does not un-hallucinate the INPUTS.
+- **Extraction escapes it by grounding.** Reading a real book chunk and explaining it needs
+  only reading comprehension of provided text; it never generates target-language content from
+  absent knowledge, so it cannot hallucinate vocabulary.
+
+**Principle:** for low-resource knowledge injection, GENERATING synthetic examples is bottle-
+necked by the model's knowledge of the target -- exactly what is missing -- so ~half the
+sentences are contaminated; EXTRACTING/explaining the source is not. **Testable prediction:**
+on a HIGH-resource target the generator would not hallucinate and pairs should close much of
+the gap -- a clean way to bound where each engine wins.
+
+Budget note: the headline (extraction 21.9 @ 60K tok vs sieve 19.1 @ 1.13M tok) is NOT
+token-matched -- extraction wins with ~19x fewer tokens. At matched 60K, extraction 21.9 vs
+sieve 15.3 (sieve undertrained there, steps-confounded); extraction @ 60K beats sieve at EVERY
+budget measured, including sieve's full 1.13M. A second, compounding factor is gold dilution:
+the reliable gold anchor is 2.2% of the sieve set vs 20.3% of the extraction set.
+
+Caveats: our sieve is a weakened SIEVE (19.1 vs their 24.48, LoRA vs full-FT); "attested"
+includes the book's English text, so 17% / 47% are LOWER bounds on non-Kalamang content.
+Untested causal capstones (cheap, not run): filter sieve to attested-vocab-only pairs and
+retrain; upsample the gold anchor from 2.2% -> 20% in the sieve set.
+
 # RuleArena @ 8B — still capability-bound (revisit of the 3B null)
 
 phase0 headroom gate at Qwen3-8B, L0 airline fees, n=100, thinking ON, max 4000 tok:
